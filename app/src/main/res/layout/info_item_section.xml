@@ -15,8 +15,7 @@
             android:textColor="@color/colorPrimary"
             android:background="#66ffffff"
             android:textSize="13sp"
-            android:text="GENERAL"
-            android:textStyle="bold" />
+            android:text="GENERAL" />
 
     <View
             android:id="@+id/divider"

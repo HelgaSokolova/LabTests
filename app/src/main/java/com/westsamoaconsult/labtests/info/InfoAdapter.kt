@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.R
-import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_item_range.view.*
 import kotlinx.android.synthetic.main.info_item_section.view.*
+import kotlinx.android.synthetic.main.info_item_text_size.view.*
 
 class InfoAdapter(val infoList: List<InfoItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -22,6 +22,7 @@ class InfoAdapter(val infoList: List<InfoItem>) :
         return when (viewType) {
             InfoItem.TYPE.SECTION -> SectionViewHolder(inflater.inflate(R.layout.info_item_section, parent, false))
             InfoItem.TYPE.RANGE -> RangeViewHolder(inflater.inflate(R.layout.info_item_range, parent, false))
+            InfoItem.TYPE.TEXTSIZE -> TextSizeViewHolder(inflater.inflate(R.layout.info_item_text_size, parent, false))
             else -> SectionViewHolder(inflater.inflate(R.layout.info_item_section, parent, false))
         }
     }
@@ -50,6 +51,15 @@ class InfoAdapter(val infoList: List<InfoItem>) :
 
             itemView.segmentGroup.check(mItem.defaultCheckId)
             itemView.segmentGroup.setOnCheckedChangeListener(mItem.listener)
+        }
+    }
+
+    class TextSizeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), InfoItemViewHolder {
+        override fun bindViews(item: InfoItem) {
+            val mItem = item as TextSizeInfoItem
+
+            itemView.segmentGroupText.check(mItem.defaultCheckId)
+            itemView.segmentGroupText.setOnCheckedChangeListener(mItem.listener)
         }
     }
 

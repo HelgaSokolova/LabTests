@@ -21,14 +21,20 @@ class InfoViewFragment: Fragment(), RadioGroup.OnCheckedChangeListener {
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        val defaultCheckedId = when (Utils.getReferenceRange()) {
+        val defaultRangeId = when (Utils.getReferenceRange()) {
             "SI" -> R.id.buttonSI
             else -> R.id.buttonUS
+        }
+        val defaultTextId = when (Utils.getGlobalTextSize()) {
+            14 -> R.id.buttonSmall
+            16 -> R.id.buttonMedium
+            else -> R.id.buttonLarge
         }
 
         val listInfoItem = mutableListOf<InfoItem>()
         listInfoItem.add(SectionInfoItem("GENERAL"))
-        listInfoItem.add(RangeInfoItem(defaultCheckedId, this))
+        listInfoItem.add(RangeInfoItem(defaultRangeId, this))
+        listInfoItem.add(TextSizeInfoItem(defaultTextId, this))
 
         listInfoItem.add(SectionInfoItem("IN-APP PURCHASE"))
         listInfoItem.add(SectionInfoItem("APP DETAILS"))
@@ -40,6 +46,9 @@ class InfoViewFragment: Fragment(), RadioGroup.OnCheckedChangeListener {
         when (checkedId) {
             R.id.buttonSI -> Utils.setReferenceRange("SI")
             R.id.buttonUS -> Utils.setReferenceRange("US")
+            R.id.buttonSmall -> Utils.setGlobalTextSize(14)
+            R.id.buttonMedium -> Utils.setGlobalTextSize(16)
+            R.id.buttonLarge -> Utils.setGlobalTextSize(19)
         }
     }
 }

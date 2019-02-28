@@ -25,3 +25,8 @@ class RangeInfoItem(
     val defaultCheckId: Int,
     val listener: RadioGroup.OnCheckedChangeListener
 ) : InfoItem(InfoItem.TYPE.RANGE, "")
+
+class TextSizeInfoItem(
+    val defaultCheckId: Int,
+    val listener: RadioGroup.OnCheckedChangeListener
+) : InfoItem(InfoItem.TYPE.TEXTSIZE, "")

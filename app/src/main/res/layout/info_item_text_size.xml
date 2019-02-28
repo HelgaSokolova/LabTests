@@ -20,11 +20,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@android:color/black"
-                android:text="Reference Range"
+                android:text="Text Size"
         />
 
         <com.westsamoaconsult.labtests.components.SegmentedGroup
-                android:id="@+id/segmentGroup"
+                android:id="@+id/segmentGroupText"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:orientation="horizontal"
@@ -33,20 +33,25 @@
                 segmentedgroup:sc_tint_color="@color/colorPrimary">
 
             <RadioButton
-                    android:id="@+id/buttonSI"
+                    android:id="@+id/buttonSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/RadioButton"
-                    android:text="SI"
-                    android:minWidth="75dp"/>
+                    android:text="Small"
+                    style="@style/RadioButton"/>
 
             <RadioButton
-                    android:id="@+id/buttonUS"
+                    android:id="@+id/buttonMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/RadioButton"
-                    android:text="US"
-                    android:minWidth="75dp"/>
+                    android:text="Medium"
+                    style="@style/RadioButton" />
+
+            <RadioButton
+                    android:id="@+id/buttonLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large"
+                    style="@style/RadioButton" />
         </com.westsamoaconsult.labtests.components.SegmentedGroup>
     </LinearLayout>
 
