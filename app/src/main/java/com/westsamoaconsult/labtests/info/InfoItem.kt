@@ -30,3 +30,8 @@ class TextSizeInfoItem(
     val defaultCheckId: Int,
     val listener: RadioGroup.OnCheckedChangeListener
 ) : InfoItem(InfoItem.TYPE.TEXTSIZE, "")
+
+class DefaultInfoItem(
+    val description: String,
+    val listener: InfoAdapter.OnItemClickListener
+) : InfoItem(InfoItem.TYPE.NORMAL, description)
