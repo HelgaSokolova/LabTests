@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:paddingStart="16dp"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingEnd="16dp"
+            android:gravity="center">
+
+        <com.westsamoaconsult.labtests.components.DynamicSizeTextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:text="Reference Range"
+        />
+
+        <com.westsamoaconsult.labtests.components.SegmentedGroup
+                android:id="@+id/segmentGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                segmentedgroup:sc_border_width="1dp"
+                segmentedgroup:sc_corner_radius="5dp"
+                segmentedgroup:sc_tint_color="@color/colorPrimary">
+
+            <RadioButton
+                    android:id="@+id/buttonSI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SI"
+                    style="@style/RadioButton"/>
+
+            <RadioButton
+                    android:id="@+id/buttonUS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="US"
+                    style="@style/RadioButton" />
+        </com.westsamoaconsult.labtests.components.SegmentedGroup>
+    </LinearLayout>
+
+    <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c8c7cc"
+    />
+
+</LinearLayout>

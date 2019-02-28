@@ -1,4 +1,4 @@
-package com.westsamoaconsult.labtests.information
+package com.westsamoaconsult.labtests.info
 
 abstract class InfoItem(
     val type: Int,
@@ -18,3 +18,5 @@ abstract class InfoItem(
 data class SectionInfoItem(
     val description: String
 ) : InfoItem(InfoItem.TYPE.SECTION, description)
+
+class RangeInfoItem() : InfoItem(InfoItem.TYPE.RANGE, "")

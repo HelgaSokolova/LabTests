@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-
+    <color name="radio_button_selected_color">#66c0cf</color>
+    <color name="radio_button_unselected_color">@android:color/transparent</color>
 </resources>
