@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.R
+import com.westsamoaconsult.labtests.utils.Utils
+import kotlinx.android.synthetic.main.info_item_range.view.*
 import kotlinx.android.synthetic.main.info_item_section.view.*
 
 class InfoAdapter(val infoList: List<InfoItem>) :
@@ -45,6 +47,9 @@ class InfoAdapter(val infoList: List<InfoItem>) :
     class RangeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), InfoItemViewHolder {
         override fun bindViews(item: InfoItem) {
             val mItem = item as RangeInfoItem
+
+            itemView.segmentGroup.check(mItem.defaultCheckId)
+            itemView.segmentGroup.setOnCheckedChangeListener(mItem.listener)
         }
     }
 

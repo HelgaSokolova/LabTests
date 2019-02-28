@@ -1,5 +1,7 @@
 package com.westsamoaconsult.labtests.info
 
+import android.widget.RadioGroup
+
 abstract class InfoItem(
     val type: Int,
     val infoDescription: String) {
@@ -19,4 +21,7 @@ data class SectionInfoItem(
     val description: String
 ) : InfoItem(InfoItem.TYPE.SECTION, description)
 
-class RangeInfoItem() : InfoItem(InfoItem.TYPE.RANGE, "")
+class RangeInfoItem(
+    val defaultCheckId: Int,
+    val listener: RadioGroup.OnCheckedChangeListener
+) : InfoItem(InfoItem.TYPE.RANGE, "")
