@@ -12,7 +12,7 @@
             android:paddingTop="15dp"
             android:paddingStart="15dp"
             android:textColor="@color/colorPrimary"
-            android:background="#efefef"
+            android:background="#efeff4"
             android:textSize="13sp"
             android:text="GENERAL"
             android:textStyle="bold" />
@@ -20,7 +20,7 @@
     <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#d9d9d9"
+            android:background="#c8c7cc"
     />
 
 </LinearLayout>

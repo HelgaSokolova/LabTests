@@ -19,7 +19,7 @@
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#80ffffff"
+            android:background="#fefefe"
             app:itemIconTint="@drawable/tab_bar_item_background"
             app:itemTextColor="@drawable/tab_bar_item_background"
             app:menu="@menu/bottom_navigation_menu" />
