@@ -1,0 +1,1534 @@
+{
+  "Articles": [
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Sodium (Na)",
+      "address": "1"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Potassium (K)",
+      "address": "2"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Chloride (Cl)",
+      "address": "3"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Osmolality",
+      "address": "4"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Urea (Carbamide)",
+      "address": "5"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Uric Acid",
+      "address": "6"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Creatinine",
+      "address": "7"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "BUN (Blood urea nitrogen)",
+      "address": "8"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Glucose (fasting)",
+      "address": "9"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Toral Serum Iron (TSI)",
+      "address": "10"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Total iron-binding capacity (TIBC)",
+      "address": "11"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Transferrin",
+      "address": "12"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Ferritin",
+      "address": "13"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Ammonia",
+      "address": "14"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Insulin",
+      "address": "15"
+    },
+    {
+      "categories": [
+        4
+      ],
+      "type": 1,
+      "name": "Lactate",
+      "address": "16"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Total Protein",
+      "address": "17"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Albumin",
+      "address": "18"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Globulins (IgG, IgA, IgM)",
+      "address": "19"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Total Bilirubin",
+      "address": "20"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Direct Bilirubin",
+      "address": "21"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Alanine transaminase (ALT)",
+      "address": "22"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Alkaline phosphatase (ALP)",
+      "address": "23"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Gamma glutamyl transferase (GGT)",
+      "address": "24"
+    },
+    {
+      "categories": [
+        8
+      ],
+      "type": 1,
+      "name": "Creatine kinase (CK)",
+      "address": "25"
+    },
+    {
+      "categories": [
+        8
+      ],
+      "type": 1,
+      "name": "CK-MB",
+      "address": "26"
+    },
+    {
+      "categories": [
+        8
+      ],
+      "type": 1,
+      "name": "Troponin (TNT, TNI)",
+      "address": "27"
+    },
+    {
+      "categories": [
+        6
+      ],
+      "type": 1,
+      "name": "Aspartate transaminase (AST)",
+      "address": "28"
+    },
+    {
+      "categories": [
+        6
+      ],
+      "type": 1,
+      "name": "Lactate dehydrogenase (LDH)",
+      "address": "29"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Amylase",
+      "address": "30"
+    },
+    {
+      "categories": [
+        12
+      ],
+      "type": 1,
+      "name": "C-reactive protein (CRP)",
+      "address": "31"
+    },
+    {
+      "categories": [
+        8
+      ],
+      "type": 1,
+      "name": "High-sensitive CRP (hsCRP)",
+      "address": "32"
+    },
+    {
+      "categories": [
+        3
+      ],
+      "type": 1,
+      "name": "D-dimer",
+      "address": "33"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Lipase",
+      "address": "34"
+    },
+    {
+      "categories": [
+        7
+      ],
+      "type": 1,
+      "name": "Ionised calcium (Ca++)",
+      "address": "35"
+    },
+    {
+      "categories": [
+        7
+      ],
+      "type": 1,
+      "name": "Total calcium (Ca)",
+      "address": "36"
+    },
+    {
+      "categories": [
+        7
+      ],
+      "type": 1,
+      "name": "Phosphate, inorganic",
+      "address": "37"
+    },
+    {
+      "categories": [
+        7
+      ],
+      "type": 1,
+      "name": "Copper (Cu)",
+      "address": "38"
+    },
+    {
+      "categories": [
+        7
+      ],
+      "type": 1,
+      "name": "Zinc (Zn)",
+      "address": "39"
+    },
+    {
+      "categories": [
+        7
+      ],
+      "type": 1,
+      "name": "Magnesium (Mg)",
+      "address": "40"
+    },
+    {
+      "categories": [
+        10
+      ],
+      "type": 1,
+      "name": "Triglycerides",
+      "address": "41"
+    },
+    {
+      "categories": [
+        10
+      ],
+      "type": 1,
+      "name": "Total cholesterol",
+      "address": "42"
+    },
+    {
+      "categories": [
+        10
+      ],
+      "type": 1,
+      "name": "HDL cholesterol",
+      "address": "43"
+    },
+    {
+      "categories": [
+        10
+      ],
+      "type": 1,
+      "name": "LDL cholesterol",
+      "address": "44"
+    },
+    {
+      "name": "TSH (Thyrotropin)",
+      "categories": [
+        11
+      ],
+      "subtitle": "Thyroid Stimulating Hormone",
+      "type": 1,
+      "address": "45"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Free thyroxine (FT4)",
+      "address": "46"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Total thyroxine",
+      "address": "47"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Free triiodthyronine (FT3)",
+      "address": "48"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Total triiodthyronine",
+      "address": "49"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Thyroxine-binding globulin (TBG)",
+      "address": "50"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Thyroid antibodies",
+      "address": "51"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Thyroglobulin antibody (anti-Tg)",
+      "address": "52"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Thyroperoxidase antibodies (anti-TPO)",
+      "address": "53"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Thyrotropin Receptor Antibody (TRAb)",
+      "address": "54"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Adrenocorticotropic hormone (ACTH)",
+      "address": "55"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Growth hormone (GH)",
+      "address": "56"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Insulin-Like Growth Factor 1 (IGF-1)",
+      "address": "57"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Prolactin",
+      "address": "58"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Testosterone",
+      "address": "59"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "17-Hydroxyprogesterone",
+      "address": "60"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Vitamin D (25-hydroxycholecalciferol)",
+      "address": "61"
+    },
+    {
+      "categories": [
+        6
+      ],
+      "type": 1,
+      "name": "Homocysteine",
+      "address": "62"
+    },
+    {
+      "categories": [
+        6
+      ],
+      "type": 1,
+      "name": "Vitamin A",
+      "address": "63"
+    },
+    {
+      "categories": [
+        6
+      ],
+      "type": 1,
+      "name": "Vitamin C (Ascorbic acid)",
+      "address": "64"
+    },
+    {
+      "categories": [
+        7
+      ],
+      "type": 1,
+      "name": "Lead",
+      "address": "65"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "HbA1c (Glycosylated hemoglobin)",
+      "address": "66"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Hemoglobin in plasma",
+      "address": "67"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Reticulocytes",
+      "address": "68"
+    },
+    {
+      "categories": [
+        2
+      ],
+      "type": 1,
+      "name": "CD4+ cells",
+      "address": "69"
+    },
+    {
+      "categories": [
+        3
+      ],
+      "type": 1,
+      "name": "Prothrombin time (PT)",
+      "address": "70"
+    },
+    {
+      "name": "APTT",
+      "categories": [
+        3
+      ],
+      "subtitle": "Activated partial thromboplastin time",
+      "type": 1,
+      "address": "71"
+    },
+    {
+      "categories": [
+        3
+      ],
+      "type": 1,
+      "name": "Fibrinogen",
+      "address": "72"
+    },
+    {
+      "categories": [
+        3
+      ],
+      "type": 1,
+      "name": "Alpha 1-antitrypsin (AAT)",
+      "address": "73"
+    },
+    {
+      "categories": [
+        12
+      ],
+      "type": 1,
+      "name": "Antinuclear antibodies (ANA)",
+      "address": "74"
+    },
+    {
+      "categories": [
+        12
+      ],
+      "type": 1,
+      "name": "Reumatoid factor (RF)",
+      "address": "75"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Hemoglobin (Hgb)",
+      "address": "76"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Complete Blood Count (CBC)",
+      "address": "77"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Hematocrit (Hct)",
+      "address": "78"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Mean cell volume (MCV)",
+      "address": "79"
+    },
+    {
+      "name": "MCHC",
+      "categories": [
+        1
+      ],
+      "subtitle": "Mean Cell Hemoglobin Concentration",
+      "type": 1,
+      "address": "80"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Red Blood Cell Count (RBC)",
+      "address": "81"
+    },
+    {
+      "categories": [
+        2
+      ],
+      "type": 1,
+      "name": "White Blood Cell Count (WBC)",
+      "address": "82"
+    },
+    {
+      "name": "Neutrophil granulocytes",
+      "categories": [
+        2
+      ],
+      "subtitle": "Grans, polys, PMNs, segs",
+      "type": 1,
+      "address": "83"
+    },
+    {
+      "categories": [
+        2
+      ],
+      "type": 1,
+      "name": "Lymphocytes",
+      "address": "84"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Platelet count (Thrombocytes)",
+      "address": "85"
+    },
+    {
+      "name": "INR",
+      "categories": [
+        3
+      ],
+      "subtitle": "International Normalized Ratio",
+      "type": 1,
+      "address": "86"
+    },
+    {
+      "categories": [
+        12
+      ],
+      "type": 1,
+      "name": "Erythrocyte sedimentation rate (ESR, SR)",
+      "address": "87"
+    },
+    {
+      "categories": [
+        5
+      ],
+      "type": 1,
+      "name": "pH",
+      "address": "88"
+    },
+    {
+      "categories": [
+        5
+      ],
+      "type": 1,
+      "name": "Base excess (BE)",
+      "address": "89"
+    },
+    {
+      "categories": [
+        5
+      ],
+      "type": 1,
+      "name": "pO2",
+      "address": "90"
+    },
+    {
+      "categories": [
+        5
+      ],
+      "type": 1,
+      "name": "Oxygen saturation (SAT)",
+      "address": "91"
+    },
+    {
+      "categories": [
+        5
+      ],
+      "type": 1,
+      "name": "pCO2",
+      "address": "92"
+    },
+    {
+      "categories": [
+        5
+      ],
+      "type": 1,
+      "name": "Bicarbonate (HCO3)",
+      "address": "93"
+    },
+    {
+      "categories": [
+        5
+      ],
+      "type": 1,
+      "name": "Standard Bicarbonate (SBCe)",
+      "address": "94"
+    },
+    {
+      "categories": [
+        2
+      ],
+      "type": 1,
+      "name": "Monocytes",
+      "address": "95"
+    },
+    {
+      "categories": [
+        2
+      ],
+      "type": 1,
+      "name": "Eosinophil granulocytes",
+      "address": "96"
+    },
+    {
+      "categories": [
+        2
+      ],
+      "type": 1,
+      "name": "Basophil granulocytes",
+      "address": "97"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Parathyroid hormone (PTH)",
+      "address": "98"
+    },
+    {
+      "categories": [
+        12
+      ],
+      "type": 1,
+      "name": "Prostate-Specific Antigen (PSA)",
+      "address": "99"
+    },
+    {
+      "name": "Monoclonal Protein",
+      "categories": [
+        12
+      ],
+      "subtitle": "M-Component, Paraprotein, Bence Jones Protein",
+      "type": 1,
+      "address": "100"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Ovarian Profile (LH, FSH)",
+      "address": "101"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "C-peptide",
+      "address": "102"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Human chorionic gonadotropin (hCG)",
+      "address": "103"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Gastrin",
+      "address": "104"
+    },
+    {
+      "categories": [
+        12
+      ],
+      "type": 1,
+      "name": "Cytoplasmic Neutrophil Antibodies (ANCA)",
+      "address": "105"
+    },
+    {
+      "name": "Double stranded DNA Antibodies",
+      "categories": [
+        12
+      ],
+      "subtitle": "dsDNA-Ab",
+      "type": 1,
+      "address": "106"
+    },
+    {
+      "categories": [
+        8
+      ],
+      "type": 1,
+      "name": "Myoglobin",
+      "address": "107"
+    },
+    {
+      "categories": [
+        3
+      ],
+      "type": 1,
+      "name": "Lupus-Like Anticoagulant (LA)",
+      "address": "108"
+    },
+    {
+      "name": "Phospholipid Antibodies",
+      "categories": [
+        3
+      ],
+      "subtitle": "Cardiolipin Antibodies",
+      "type": 1,
+      "address": "109"
+    },
+    {
+      "categories": [
+        9
+      ],
+      "type": 1,
+      "name": "Alpha-Fetoprotein (AFP)",
+      "address": "110"
+    },
+    {
+      "categories": [
+        6
+      ],
+      "type": 1,
+      "name": "Angiotensin Converting Enzyme (ACE)",
+      "address": "111"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Methylmalonic Acid (MMA)",
+      "address": "112"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Haptoglobin",
+      "address": "113"
+    },
+    {
+      "categories": [
+        1
+      ],
+      "type": 1,
+      "name": "Folate",
+      "address": "114"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Renin Activity",
+      "address": "115"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Aldosterone",
+      "address": "116"
+    },
+    {
+      "categories": [
+        8
+      ],
+      "type": 1,
+      "name": "BNP (B-Type Natriuretic Peptide)",
+      "address": "117"
+    },
+    {
+      "categories": [
+        5
+      ],
+      "type": 1,
+      "name": "Arterial Blood Gas Interpretation",
+      "address": "118"
+    },
+    {
+      "categories": [
+        11
+      ],
+      "type": 1,
+      "name": "Estradiol",
+      "address": "119"
+    },
+    {
+      "categories": [
+        13
+      ],
+      "type": 1,
+      "name": "Chorionic Gonadotropin",
+      "address": "120"
+    },
+    {
+      "categories": [
+        13
+      ],
+      "type": 1,
+      "name": "Cancer Antigen 125 (CA -125)",
+      "address": "121"
+    },
+    {
+      "categories": [
+        13
+      ],
+      "type": 1,
+      "name": "Carbohydrate Antigen 19-9  (CA 19-9)",
+      "address": "122"
+    },
+    {
+      "categories": [
+        13
+      ],
+      "type": 1,
+      "name": "Carcinoembryonic Antigen (CEA)",
+      "address": "123"
+    },
+    {
+      "categories": [
+        13
+      ],
+      "type": 1,
+      "name": "Prostate-Specific Antigen (PSA)",
+      "address": "124"
+    },
+    {
+      "categories": [
+        13
+      ],
+      "type": 1,
+      "name": "Prostate-Specific Antigen Ratio",
+      "address": "125"
+    },
+    {
+      "categories": [
+        13
+      ],
+      "type": 1,
+      "name": "Cervical Papanicolaou Smear",
+      "address": "126"
+    },
+    {
+      "categories": [
+        14
+      ],
+      "type": 1,
+      "name": "Cell Count and Differential (CSF)",
+      "address": "127"
+    },
+    {
+      "categories": [
+        14
+      ],
+      "type": 1,
+      "name": "Glucose (CSF)",
+      "address": "128"
+    },
+    {
+      "categories": [
+        14
+      ],
+      "type": 1,
+      "name": "IgG Index (CSF)",
+      "address": "129"
+    },
+    {
+      "categories": [
+        14
+      ],
+      "type": 1,
+      "name": "Total Protein (CSF)",
+      "address": "130"
+    },
+    {
+      "categories": [
+        14
+      ],
+      "type": 1,
+      "name": "VDRL (CSF)",
+      "address": "131"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Amikacin",
+      "address": "132"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Amitriptyline",
+      "address": "134"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Nortriptyline",
+      "address": "135"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Imipramine",
+      "address": "136"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Desipramine",
+      "address": "137"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Doxepin",
+      "address": "138"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Carbamazepine",
+      "address": "139"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Cyclosporine",
+      "address": "140"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Digoxin",
+      "address": "141"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Ethosuximide",
+      "address": "142"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Gentamicin",
+      "address": "143"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Lidocaine",
+      "address": "144"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Lithium",
+      "address": "145"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Phenobarbital",
+      "address": "146"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Phenytoin",
+      "address": "147"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Primidone",
+      "address": "148"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Procainamide",
+      "address": "149"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Quinidine",
+      "address": "150"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Sirolimus",
+      "address": "151"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Tacrolimus",
+      "address": "152"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Theophylline",
+      "address": "153"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Tobramycin",
+      "address": "154"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Valproic Acid",
+      "address": "155"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Vancomycin",
+      "address": "156"
+    },
+    {
+      "categories": [
+        15
+      ],
+      "type": 1,
+      "name": "Acetaminophen/Paracetamole",
+      "address": "157"
+    },
+    {
+      "categories": [
+        16
+      ],
+      "type": 1,
+      "name": "Carbon Monoxide",
+      "address": "158"
+    },
+    {
+      "categories": [
+        16
+      ],
+      "type": 1,
+      "name": "Ethanol",
+      "address": "159"
+    },
+    {
+      "categories": [
+        16
+      ],
+      "type": 1,
+      "name": "Volatile and Ethylene Glycol",
+      "address": "161"
+    },
+    {
+      "categories": [
+        16
+      ],
+      "type": 1,
+      "name": "Salicylate",
+      "address": "162"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Estimated GFR (eGFR)",
+      "address": "163"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "5-Hydroxyindoleacetic Acid (5-HIAA)",
+      "address": "164"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Creatinine Clearance",
+      "address": "165"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Bilirubin (Urine)",
+      "address": "166"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Drugs of abuse (Urine)",
+      "address": "167"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Glucose (Urine)",
+      "address": "168"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Specific gravity (Urine)",
+      "address": "169"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Osmolality (Urine)",
+      "address": "170"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Protein (Urine)",
+      "address": "171"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "pH (Urine)",
+      "address": "172"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Ketones (Urine)",
+      "address": "173"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Hemoglobin (Urine)",
+      "address": "174"
+    },
+    {
+      "categories": [
+        17
+      ],
+      "type": 1,
+      "name": "Nitrate (Urine)",
+      "address": "175"
+    }
+  ],
+  "Categories": [
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Red Blood Cells",
+      "logo": "Category-1.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "White Blood Cells",
+      "logo": "Category-2.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Coagulation",
+      "logo": "Category-3.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Electrolytes and Metabolites",
+      "logo": "Category-4.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Arterial Blood Gas",
+      "logo": "Category-5.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Enzymes and Proteins",
+      "logo": "Category-6.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Ions and Trace Metals",
+      "logo": "Category-7.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Cardiac Tests",
+      "logo": "Category-8.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Liver and Pancreas",
+      "logo": "Category-9.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Lipids",
+      "logo": "Category-10.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Hormones",
+      "logo": "Category-11.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Immunology",
+      "logo": "Category-12.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Cancer Markers",
+      "logo": "Category-13.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Cerebrospinal Fluid",
+      "logo": "Category-14.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Drugs",
+      "logo": "Category-15.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Toxicology",
+      "logo": "Category-16.png"
+    },
+    {
+      "parrents": [
+        0
+      ],
+      "description": "Details on cat 1...",
+      "name": "Urine",
+      "logo": "Category-17.png"
+    }
+  ]
+}

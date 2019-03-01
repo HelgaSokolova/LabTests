@@ -5,12 +5,13 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import com.westsamoaconsult.labtests.bookmark.BookmarkViewFragment
 import com.westsamoaconsult.labtests.info.InfoViewFragment
 import com.westsamoaconsult.labtests.utils.FragmentUtils
 import kotlinx.android.synthetic.main.main_activity.*
 
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         when (item.itemId) {
             R.id.more -> fragment = InfoViewFragment()
-            else -> fragment = InfoViewFragment()
+            else -> fragment = BookmarkViewFragment()
         }
 
         return FragmentUtils.replaceFragment(fragment, supportFragmentManager, R.id.fragmentContainer)

@@ -11,12 +11,12 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.utils.Utils
-import kotlinx.android.synthetic.main.info_fragment_view.*
+import kotlinx.android.synthetic.main.info_fragment.*
 
 
 class InfoViewFragment: Fragment(), RadioGroup.OnCheckedChangeListener, InfoAdapter.OnItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.info_fragment_view, container, false)
+        return inflater.inflate(R.layout.info_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

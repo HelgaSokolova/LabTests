@@ -1,6 +1,7 @@
 package com.westsamoaconsult.labtests.utils
 
 import com.westsamoaconsult.labtests.MainApplication
+import kotlin.text.Charsets.UTF_8
 
 class Utils {
     companion object {
@@ -12,5 +13,15 @@ class Utils {
 
         fun setReferenceRange(value: String) = editor.putString(Constants.REFERENCE_RANGE, value).commit()
         fun getReferenceRange() = settings.getString(Constants.REFERENCE_RANGE, "SI")
+
+        fun loadJSONFromAsset(): String {
+            val inputStream = MainApplication.instance.getAssets().open("mainDatabase.json")
+            val size = inputStream.available()
+            val buffer = ByteArray(size)
+            inputStream.read(buffer)
+            inputStream.close()
+
+            return String(buffer, UTF_8)
+        }
     }
 }
