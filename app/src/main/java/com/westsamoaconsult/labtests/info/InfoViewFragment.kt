@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import com.westsamoaconsult.labtests.R
+import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
 
@@ -24,14 +25,16 @@ class InfoViewFragment: Fragment(), RadioGroup.OnCheckedChangeListener, InfoAdap
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        val defaultRangeId = when (Utils.getReferenceRange()) {
+        val defaultRangeId = when (Utils.loadStringData(Constants.REFERENCE_RANGE)) {
             "SI" -> R.id.buttonSI
-            else -> R.id.buttonUS
+            "US" -> R.id.buttonUS
+            else -> R.id.buttonSI
         }
-        val defaultTextId = when (Utils.getGlobalTextSize()) {
+        val defaultTextId = when (Utils.loadIntData(Constants.GLOBAL_TEXT_SIZE)) {
             14 -> R.id.buttonSmall
             16 -> R.id.buttonMedium
-            else -> R.id.buttonLarge
+            19 -> R.id.buttonLarge
+            else -> R.id.buttonMedium
         }
 
         val listInfoItem = mutableListOf<InfoItem>()
@@ -52,11 +55,11 @@ class InfoViewFragment: Fragment(), RadioGroup.OnCheckedChangeListener, InfoAdap
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         when (checkedId) {
-            R.id.buttonSI -> Utils.setReferenceRange("SI")
-            R.id.buttonUS -> Utils.setReferenceRange("US")
-            R.id.buttonSmall -> Utils.setGlobalTextSize(14)
-            R.id.buttonMedium -> Utils.setGlobalTextSize(16)
-            R.id.buttonLarge -> Utils.setGlobalTextSize(19)
+            R.id.buttonSI -> Utils.saveData(Constants.REFERENCE_RANGE, "SI")
+            R.id.buttonUS -> Utils.saveData(Constants.REFERENCE_RANGE, "US")
+            R.id.buttonSmall -> Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 14)
+            R.id.buttonMedium -> Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 16)
+            R.id.buttonLarge -> Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 19)
         }
     }
 

@@ -1,5 +1,6 @@
 package com.westsamoaconsult.labtests.utils
 
+import com.google.gson.Gson
 import com.westsamoaconsult.labtests.MainApplication
 import kotlin.text.Charsets.UTF_8
 
@@ -8,11 +9,15 @@ class Utils {
         val settings by lazy { MainApplication.instance.getSharedPreferences(Constants.PREFS_NAME, 0) }
         val editor by lazy { settings.edit() }
 
-        fun setGlobalTextSize(value: Int) = editor.putInt(Constants.GLOBAL_TEXT_SIZE, value).commit()
-        fun getGlobalTextSize() = settings.getInt(Constants.GLOBAL_TEXT_SIZE, 16)
+        fun saveData(key: String, value: String) = editor.putString(key, value).commit()
+        fun loadStringData(key: String) = settings.getString(key, "")
 
-        fun setReferenceRange(value: String) = editor.putString(Constants.REFERENCE_RANGE, value).commit()
-        fun getReferenceRange() = settings.getString(Constants.REFERENCE_RANGE, "SI")
+        fun saveData(key: String, value: Int) = editor.putInt(key, value).commit()
+        fun loadIntData(key: String) : Int = settings.getInt(key, -1)
+
+        fun saveData(key: String, value: Any) = saveData(key, Gson().toJson(value))
+        @Suppress("UNCHECKED_CAST")
+        inline fun <reified T: Any> loadData(key: String) = Gson().fromJson(loadStringData(key), T::class.java)
 
         fun loadJSONFromAsset(fileName: String): String {
             val inputStream = MainApplication.instance.getAssets().open(fileName)
