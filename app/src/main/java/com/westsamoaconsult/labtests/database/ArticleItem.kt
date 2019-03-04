@@ -1,39 +1,42 @@
 package com.westsamoaconsult.labtests.database
 
+import kotlinx.serialization.ContextualSerialization
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Optional
 import java.util.*
 
+@Serializable
 data class ArticleItem(
-    var itemId: Int?,
-    val htmlText: String?,
-    val categories: List<CategoryItem>?,
-    val name: String?,
-    val lastOpened: Date = Date(0),
-    val type: Int?,
-    val address: String?,
-    val subtitle: String?,
-    val isFavorite: Int?,
-    var link: String?,
-    var pubmed: String?,
-    val flag: String?,
-    var Link0: MutableMap<Any, Any>,
-    val Link1: MutableMap<Any, Any>,
-    val Link2: MutableMap<Any, Any>,
-    val Link3: MutableMap<Any, Any>,
-    var emedicine: String?,
-    var url: String?,
-    var pubname: String?,
-    var wikiname: String?,
-    var emediname: String?,
-    var gname: String?,
-    var publogo: String?,
-    var wikilogo: String?,
-    var emedilogo: String?,
-    var glogo: String?,
-    val linkcount: Int?,
-    val linkarray: MutableList<Any> = ArrayList()
+    @Optional var itemId: Int = 0,
+    val categories: List<Int>,
+    val name: String,
+    val type: Int,
+    val address: String,
+    @ContextualSerialization @Optional val lastOpened: Date = Date(0),
+    @Optional val subtitle: String? = null,
+    @Optional val isFavorite: Int? = null,
+    @Optional var link: String? = null,
+    @Optional var pubmed: String? = null,
+    @Optional val flag: String? = null,
+    @Optional var Link0: MutableMap<Any, Any>? = null,
+    @Optional val Link1: MutableMap<Any, Any>? = null,
+    @Optional val Link2: MutableMap<Any, Any>? = null,
+    @Optional val Link3: MutableMap<Any, Any>? = null,
+    @Optional var emedicine: String? = null,
+    @Optional var url: String? = null,
+    @Optional var pubname: String? = null,
+    @Optional var wikiname: String? = null,
+    @Optional var emediname: String? = null,
+    @Optional var gname: String? = null,
+    @Optional var publogo: String? = null,
+    @Optional var wikilogo: String? = null,
+    @Optional var emedilogo: String? = null,
+    @Optional var glogo: String? = null,
+    @Optional val linkcount: Int? = null,
+    @Optional val linkarray: MutableList<Any> = ArrayList()
 ) {
-    fun initWithNode(node: Map<String, Map<Any, Any>?>, i: Int) {
-        itemId = i
+    fun initWithNode(node: Map<String, Map<Any, Any>?>, num: Int) {
+        itemId = num
 
         linkcount?.let {
             for (i in 0..(it - 1)) {
@@ -42,21 +45,28 @@ data class ArticleItem(
             }
         }
 
-        pubmed = Link0["url"] as String
-        pubname = Link0["name"] as String
-        publogo = Link0["image"] as String
+        Link0?.let {
+            pubmed = it["url"] as String
+            pubname = it["name"] as String
+            publogo = it["image"] as String
+        }
 
-        link = Link1["url"] as String
-        wikiname = Link1["name"] as String
-        wikilogo = Link1["image"] as String
+        Link1?.let {
+            link = it["url"] as String
+            wikiname = it["name"] as String
+            wikilogo = it["image"] as String
+        }
 
-        emedicine = Link2["url"] as String
-        emediname = Link2["name"] as String
-        emedilogo = Link2["image"] as String
+        Link2?.let {
+            emedicine = it["url"] as String
+            emediname = it["name"] as String
+            emedilogo = it["image"] as String
+        }
 
-        url = Link3["url"] as String
-        gname = Link3["name"] as String
-        glogo = Link3["image"] as String
-
+        Link3?.let {
+            url = it["url"] as String
+            gname = it["name"] as String
+            glogo = it["image"] as String
+        }
     }
 }

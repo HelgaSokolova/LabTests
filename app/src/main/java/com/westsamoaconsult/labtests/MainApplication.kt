@@ -1,6 +1,7 @@
 package com.westsamoaconsult.labtests
 
 import android.app.Application
+import com.westsamoaconsult.labtests.database.Database
 
 class MainApplication : Application() {
     companion object {
@@ -8,9 +9,12 @@ class MainApplication : Application() {
             private set
     }
 
+    lateinit var database: Database
+
     override fun onCreate() {
         super.onCreate()
 
         instance = this
+        database = Database()
     }
 }

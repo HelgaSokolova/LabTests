@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.*
 import android.os.Build
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.util.StateSet
 import android.util.TypedValue
@@ -29,16 +30,16 @@ class SegmentedGroup : RadioGroup {
     private var mLastCheckId: Int = 0
 
     constructor(context: Context) : super(context) {
-        mTintColor = resources!!.getColor(R.color.radio_button_selected_color)
-        mUnCheckedTintColor = resources!!.getColor(R.color.radio_button_unselected_color)
+        mTintColor = ContextCompat.getColor(context, R.color.radio_button_selected_color)
+        mUnCheckedTintColor = ContextCompat.getColor(context, R.color.radio_button_unselected_color)
         mMarginDp = getResources().getDimension(R.dimen.radio_button_stroke_border).toInt()
         mCornerRadius = getResources().getDimension(R.dimen.radio_button_conner_radius)
         mLayoutSelector = LayoutSelector(mCornerRadius!!)
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        mTintColor = resources!!.getColor(R.color.radio_button_selected_color)
-        mUnCheckedTintColor = resources!!.getColor(R.color.radio_button_unselected_color)
+        mTintColor = ContextCompat.getColor(context, R.color.radio_button_selected_color)
+        mUnCheckedTintColor = ContextCompat.getColor(context, R.color.radio_button_unselected_color)
         mMarginDp = getResources().getDimension(R.dimen.radio_button_stroke_border).toInt()
         mCornerRadius = getResources().getDimension(R.dimen.radio_button_conner_radius)
         initAttrs(attrs)
@@ -66,17 +67,17 @@ class SegmentedGroup : RadioGroup {
 
             mTintColor = typedArray.getColor(
                 R.styleable.SegmentedGroup_sc_tint_color,
-                getResources().getColor(R.color.radio_button_selected_color)
+                ContextCompat.getColor(context, R.color.radio_button_selected_color)
             )
 
             mCheckedTextColor = typedArray.getColor(
                 R.styleable.SegmentedGroup_sc_checked_text_color,
-                getResources().getColor(android.R.color.white)
+                ContextCompat.getColor(context, android.R.color.white)
             )
 
             mUnCheckedTintColor = typedArray.getColor(
                 R.styleable.SegmentedGroup_sc_unchecked_tint_color,
-                getResources().getColor(R.color.radio_button_unselected_color)
+                ContextCompat.getColor(context, R.color.radio_button_unselected_color)
             )
         } finally {
             typedArray.recycle()
@@ -138,8 +139,8 @@ class SegmentedGroup : RadioGroup {
         (view as Button).setTextColor(colorStateList)
 
         //Redraw with tint color
-        val checkedDrawable = resources!!.getDrawable(checked).mutate()
-        val uncheckedDrawable = resources!!.getDrawable(unchecked).mutate()
+        val checkedDrawable = ContextCompat.getDrawable(context, checked)!!.mutate()
+        val uncheckedDrawable = ContextCompat.getDrawable(context, unchecked)!!.mutate()
         (checkedDrawable as GradientDrawable).setColor(mTintColor)
         checkedDrawable.setStroke(mMarginDp, mTintColor)
         (uncheckedDrawable as GradientDrawable).setStroke(mMarginDp, mTintColor)
@@ -148,7 +149,7 @@ class SegmentedGroup : RadioGroup {
         checkedDrawable.cornerRadii = mLayoutSelector!!.getChildRadii(view)
         uncheckedDrawable.cornerRadii = mLayoutSelector!!.getChildRadii(view)
 
-        val maskDrawable = resources!!.getDrawable(unchecked).mutate() as GradientDrawable
+        val maskDrawable = ContextCompat.getDrawable(context, unchecked)!!.mutate() as GradientDrawable
         maskDrawable.setStroke(mMarginDp, mTintColor)
         maskDrawable.setColor(mUnCheckedTintColor)
         maskDrawable.cornerRadii = mLayoutSelector!!.getChildRadii(view)
@@ -171,12 +172,7 @@ class SegmentedGroup : RadioGroup {
 
         mDrawableMap!![view.getId()] = transitionDrawable
 
-        //Set button background
-        if (Build.VERSION.SDK_INT >= 16) {
-            view.setBackground(stateListDrawable)
-        } else {
-            view.setBackgroundDrawable(stateListDrawable)
-        }
+        view.setBackground(stateListDrawable)
 
         super.setOnCheckedChangeListener { group, checkedId ->
             val current = mDrawableMap!![checkedId]

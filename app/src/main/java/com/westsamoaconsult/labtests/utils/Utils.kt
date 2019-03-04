@@ -14,8 +14,8 @@ class Utils {
         fun setReferenceRange(value: String) = editor.putString(Constants.REFERENCE_RANGE, value).commit()
         fun getReferenceRange() = settings.getString(Constants.REFERENCE_RANGE, "SI")
 
-        fun loadJSONFromAsset(): String {
-            val inputStream = MainApplication.instance.getAssets().open("mainDatabase.json")
+        fun loadJSONFromAsset(fileName: String): String {
+            val inputStream = MainApplication.instance.getAssets().open(fileName)
             val size = inputStream.available()
             val buffer = ByteArray(size)
             inputStream.read(buffer)

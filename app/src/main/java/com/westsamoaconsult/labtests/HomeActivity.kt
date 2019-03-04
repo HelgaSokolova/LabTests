@@ -28,7 +28,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         when (item.itemId) {
             R.id.more -> fragment = InfoViewFragment()
-            else -> fragment = BookmarkViewFragment()
+            else -> fragment = InfoViewFragment()
         }
 
         return FragmentUtils.replaceFragment(fragment, supportFragmentManager, R.id.fragmentContainer)
