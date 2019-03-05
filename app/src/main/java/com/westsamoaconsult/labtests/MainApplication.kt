@@ -7,7 +7,6 @@ import com.westsamoaconsult.labtests.database.FBDatabase
 
 class MainApplication : Application() {
     companion object {
-
         lateinit var instance: MainApplication
             private set
     }

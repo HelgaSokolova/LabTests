@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.database.CategoryItem
-import com.westsamoaconsult.labtests.utils.FragmentUtils
+import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
 
 class FirstViewFragment: Fragment(), FirstViewAdapter.OnItemClickListener {
@@ -25,6 +25,6 @@ class FirstViewFragment: Fragment(), FirstViewAdapter.OnItemClickListener {
     }
 
     override fun onClick(category: CategoryItem) {
-        FragmentUtils.addFragment(SecondViewFragment.newInstance(category.autoId, category.name), activity!!.supportFragmentManager, R.id.fragmentContainer)
+        Utils.addFragment(SecondViewFragment.newInstance(category.autoId, category.name), activity!!.supportFragmentManager, R.id.fragmentContainer)
     }
 }

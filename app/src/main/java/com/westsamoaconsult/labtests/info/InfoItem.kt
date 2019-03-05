@@ -6,14 +6,12 @@ abstract class InfoItem(
     val type: Int,
     val infoDescription: String) {
 
-    class TYPE {
-        companion object {
-            const val SECTION = 0
-            const val RANGE = 1
-            const val TEXTSIZE = 2
-            const val NORMAL = 3
-            const val VERSION = 4
-        }
+    companion object TYPE {
+        val SECTION = 0
+        val RANGE = 1
+        val TEXTSIZE = 2
+        val NORMAL = 3
+        val VERSION = 4
     }
 }
 
