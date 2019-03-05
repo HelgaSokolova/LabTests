@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "384449327245",
+    "firebase_url": "https://labtests-b1931.firebaseio.com",
+    "project_id": "labtests-b1931",
+    "storage_bucket": "labtests-b1931.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384449327245:android:9a6f631bca102c17",
+        "android_client_info": {
+          "package_name": "com.westsamoaconsult.labtests"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384449327245-pfqcasjqv6pl12bja7t2in1ul9lgqqti.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.westsamoaconsult.labtests",
+            "certificate_hash": "43813d9b31553307e5958b04465b7e37eb9f703d"
+          }
+        },
+        {
+          "client_id": "384449327245-a0r8qku453df3blesjc5p4s6kptb79ef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1NUvOAetfl6dGEISpdxH5OxQjqepa_W0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384449327245-a0r8qku453df3blesjc5p4s6kptb79ef.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "384449327245-a9i2aco3sf4cm8rdd4l1ibo4qfflmgs3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.westsamoaconsult.labtests",
+                "app_store_id": "307829594"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

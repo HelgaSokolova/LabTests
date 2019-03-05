@@ -39,7 +39,7 @@ data class ArticleItem(
         itemId = num
 
         linkcount?.let {
-            for (i in 0..(it - 1)) {
+            for (i in 0 until it) {
                 val link12 = String.format("Link%d", i)
                 linkarray.add(node[link12] as MutableMap<Any, Any>)
             }

@@ -1,6 +1,5 @@
 package com.westsamoaconsult.labtests.database
 
-import com.westsamoaconsult.labtests.database.Database.Companion.allArticles
 import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.serialization.Serializable
@@ -14,11 +13,9 @@ data class DBItem (
 )
 
 class Database {
-    companion object {
-        lateinit var allArticles: List<ArticleItem>
-        lateinit var allArticlesSorted: MutableList<ArticleItem>
-        lateinit var allCategories: List<CategoryItem>
-    }
+    var allArticles: List<ArticleItem>
+    var allArticlesSorted: MutableList<ArticleItem>
+    var allCategories: List<CategoryItem>
 
     init {
         val db = Utils.loadJSONFromAsset("mainDatabase.json")
