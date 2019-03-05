@@ -4,8 +4,10 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.TextView
+import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
+
 
 class DynamicSizeTextView : TextView {
     constructor(context: Context) : super(context) {
@@ -13,15 +15,21 @@ class DynamicSizeTextView : TextView {
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        setProperties()
+        setProperties(attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
-        setProperties()
+        setProperties(attrs)
     }
 
-    fun setProperties() {
+    fun setProperties(attrs: AttributeSet? = null) {
+        var textColor = "#616161"
+        attrs?.let {
+            val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DynamicSizeTextView)
+            textColor = typedArray.getText(R.styleable.DynamicSizeTextView_android_textColor).toString()
+        }
+
         this.textSize = Utils.loadIntData(Constants.GLOBAL_TEXT_SIZE).toFloat()
-        this.setTextColor(Color.parseColor("#616161"))
+        this.setTextColor(Color.parseColor(textColor))
     }
 }
