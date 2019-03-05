@@ -14,15 +14,18 @@ class FBDatabase {
     private fun retrieveArticles() {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val someArticleDict = dataSnapshot.getValue() as Map<String, Any>
-                articles = mutableMapOf<String, Any>()
-                articles["Articles"] = flattenDictionary(someArticleDict as Map<String, Any>)
-                usable = true;
+                dataSnapshot.getValue()?.let {
+                    articles = mutableMapOf<String, Any>()
+                    articles["Articles"] = it
+                    usable = true;
+                    return;
+                }
+                usable = false
             }
 
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
-                usable = true;
+                usable = false;
             }
         })
     }
