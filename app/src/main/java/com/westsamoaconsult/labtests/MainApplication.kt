@@ -16,6 +16,7 @@ class MainApplication : Application() {
     lateinit var FBDatabase: FBDatabase
     override fun onCreate() {
         super.onCreate()
+
         instance = this
 
         database = Database()
