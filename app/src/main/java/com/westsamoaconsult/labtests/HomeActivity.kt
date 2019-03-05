@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import com.westsamoaconsult.labtests.bookmark.BookmarkViewFragment
+import com.westsamoaconsult.labtests.bookmark.FirstViewFragment
 import com.westsamoaconsult.labtests.info.InfoViewFragment
 import com.westsamoaconsult.labtests.utils.FragmentUtils
 import kotlinx.android.synthetic.main.action_bar.*
@@ -24,7 +24,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(R.layout.main_activity)
 
         //loading the default fragment
-        FragmentUtils.addFragment(BookmarkViewFragment(), supportFragmentManager, R.id.fragmentContainer)
+        FragmentUtils.addFragment(FirstViewFragment(), supportFragmentManager, R.id.fragmentContainer)
 
         //getting bottom navigation view and attaching the listener
         bottomNavigation.setOnNavigationItemSelectedListener(this)
@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         when (item.itemId) {
             R.id.bookmarks -> {
                 actionBarTitle.text = "Categories"
-                fragment = BookmarkViewFragment()
+                fragment = FirstViewFragment()
             }
             else -> {
                 actionBarTitle.text = "More"

@@ -18,12 +18,28 @@
                 android:layout_weight="1"
                 android:paddingEnd="16dp"
                 android:gravity="center">
-            <com.westsamoaconsult.labtests.components.DynamicSizeTextView
-                    android:id="@+id/defaultTitle"
+
+            <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Text Size"/>
+                    android:orientation="vertical">
+
+                <com.westsamoaconsult.labtests.components.DynamicSizeTextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#555"
+                        android:text="Title"/>
+
+                <com.westsamoaconsult.labtests.components.DynamicSizeTextView
+                        android:id="@+id/subTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:text="SubTitle"/>
+
+            ></LinearLayout>
 
             <ImageView
                     android:layout_width="30dp"

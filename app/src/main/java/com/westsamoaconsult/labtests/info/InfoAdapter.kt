@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.R
-import kotlinx.android.synthetic.main.info_item_default.view.*
+import kotlinx.android.synthetic.main.item_default.view.*
 import kotlinx.android.synthetic.main.info_item_range.view.*
 import kotlinx.android.synthetic.main.info_item_section.view.*
 import kotlinx.android.synthetic.main.info_item_text_size.view.*
@@ -24,7 +24,7 @@ class InfoAdapter(val infoList: List<InfoItem>) :
             InfoItem.TYPE.SECTION -> SectionViewHolder(inflater.inflate(R.layout.info_item_section, parent, false))
             InfoItem.TYPE.RANGE -> RangeViewHolder(inflater.inflate(R.layout.info_item_range, parent, false))
             InfoItem.TYPE.TEXTSIZE -> TextSizeViewHolder(inflater.inflate(R.layout.info_item_text_size, parent, false))
-            InfoItem.TYPE.NORMAL -> DefaultViewHolder(inflater.inflate(R.layout.info_item_default, parent, false))
+            InfoItem.TYPE.NORMAL -> DefaultViewHolder(inflater.inflate(R.layout.item_default, parent, false))
             else -> SectionViewHolder(inflater.inflate(R.layout.info_item_section, parent, false))
         }
     }
@@ -75,7 +75,7 @@ class InfoAdapter(val infoList: List<InfoItem>) :
             item as DefaultInfoItem
 
             itemView.apply {
-                defaultTitle.text = item.description
+                title.text = item.description
                 setOnClickListener {
                     item.listener.onClick(item.description)
                 }

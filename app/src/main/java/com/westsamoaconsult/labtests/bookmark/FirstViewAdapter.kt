@@ -10,8 +10,8 @@ import android.widget.TextView
 import com.westsamoaconsult.labtests.database.CategoryItem
 import kotlinx.android.synthetic.main.bookmark_item.view.*
 
-class BookmarkAdapter(val mContext: Context, val categories: List<CategoryItem>, val listener: OnItemClickListener) :
-    RecyclerView.Adapter<BookmarkAdapter.ViewHolder>() {
+class FirstViewAdapter(val mContext: Context, val categories: List<CategoryItem>, val listener: OnItemClickListener) :
+    RecyclerView.Adapter<FirstViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

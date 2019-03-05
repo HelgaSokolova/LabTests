@@ -9,10 +9,9 @@ import android.view.ViewGroup
 import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.database.CategoryItem
-import com.westsamoaconsult.labtests.info.InfoAdapter
 import kotlinx.android.synthetic.main.info_fragment.*
 
-class BookmarkViewFragment: Fragment(), BookmarkAdapter.OnItemClickListener {
+class SecondViewFragment: Fragment(), FirstViewAdapter.OnItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.bookmark_fragment, container, false)
     }
@@ -21,7 +20,7 @@ class BookmarkViewFragment: Fragment(), BookmarkAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = BookmarkAdapter(context!!, MainApplication.instance.database.allCategories, this)
+        recyclerView.adapter = FirstViewAdapter(context!!, MainApplication.instance.database.allCategories, this)
     }
 
     override fun onClick(category: CategoryItem) {
