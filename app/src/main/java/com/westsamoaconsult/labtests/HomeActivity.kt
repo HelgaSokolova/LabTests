@@ -43,14 +43,9 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     override fun onBackPressed() {
-        val count = supportFragmentManager.backStackEntryCount
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
 
-        if (count == 0) {
-            super.onBackPressed()
-            //additional code
-        } else {
-            supportFragmentManager.popBackStack()
-        }
-
+        (fragment as? IOnBackPressed)?.onBackPressed()
+        super.onBackPressed()
     }
 }

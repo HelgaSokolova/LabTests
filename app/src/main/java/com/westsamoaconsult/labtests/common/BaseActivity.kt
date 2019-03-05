@@ -5,6 +5,14 @@ import android.view.View
 import kotlinx.android.synthetic.main.action_bar.*
 
 open class BaseActivity : AppCompatActivity() {
+    override fun onResume() {
+        super.onResume()
+
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
     fun setTitle(title: String) {
         actionBarTitle.text = title
     }
@@ -15,5 +23,9 @@ open class BaseActivity : AppCompatActivity() {
         } else {
             btnBack.visibility = View.GONE
         }
+    }
+
+    interface IOnBackPressed {
+        fun onBackPressed()
     }
 }

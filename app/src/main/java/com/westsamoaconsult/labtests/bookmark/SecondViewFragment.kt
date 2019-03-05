@@ -12,7 +12,7 @@ import com.westsamoaconsult.labtests.database.ArticleItem
 import kotlinx.android.synthetic.main.info_fragment.*
 
 
-class SecondViewFragment: Fragment(), SecondViewAdapter.OnItemClickListener {
+class SecondViewFragment: Fragment(), SecondViewAdapter.OnItemClickListener, BaseActivity.IOnBackPressed {
     companion object {
         fun newInstance(categoryId: Int, categoryName: String) = SecondViewFragment().apply {
             arguments = Bundle().apply {
@@ -39,5 +39,10 @@ class SecondViewFragment: Fragment(), SecondViewAdapter.OnItemClickListener {
 
     override fun onClick(article: ArticleItem) {
 
+    }
+
+    override fun onBackPressed() {
+        (activity as BaseActivity).setTitle("Categories")
+        (activity as BaseActivity).setBackButtonVisible(false)
     }
 }

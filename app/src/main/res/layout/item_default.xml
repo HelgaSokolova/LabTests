@@ -41,7 +41,7 @@
                         android:ellipsize="end"
                         android:visibility="gone"/>
 
-            ></LinearLayout>
+            </LinearLayout>
 
             <ImageView
                     android:layout_width="30dp"

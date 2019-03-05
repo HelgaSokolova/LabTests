@@ -9,16 +9,23 @@
     <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
+            app:contentInsetStart="7dp"
             android:layout_height="?attr/actionBarSize">
 
-        <ImageView
+        <com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout
                 android:id="@+id/btnBack"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:visibility="gone"
-                android:src="@drawable/back"
-                android:background="?android:selectableItemBackground"
-                android:clickable="true"/>
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                android:visibility="gone">
+
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/back"
+                    android:background="?android:selectableItemBackground"/>
+
+        </com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout>
 
         <TextView
                 android:id="@+id/actionBarTitle"

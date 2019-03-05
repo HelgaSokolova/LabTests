@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
+import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.database.CategoryItem
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
