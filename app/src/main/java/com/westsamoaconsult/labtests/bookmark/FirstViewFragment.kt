@@ -9,11 +9,12 @@ import android.view.ViewGroup
 import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.database.CategoryItem
+import com.westsamoaconsult.labtests.utils.FragmentUtils
 import kotlinx.android.synthetic.main.info_fragment.*
 
 class FirstViewFragment: Fragment(), FirstViewAdapter.OnItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.bookmark_fragment, container, false)
+        return inflater.inflate(R.layout.bookmark_first_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -24,6 +25,6 @@ class FirstViewFragment: Fragment(), FirstViewAdapter.OnItemClickListener {
     }
 
     override fun onClick(category: CategoryItem) {
-
+        FragmentUtils.addFragment(SecondViewFragment.newInstance(category.autoId, category.name), activity!!.supportFragmentManager, R.id.fragmentContainer)
     }
 }

@@ -5,45 +5,53 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import com.westsamoaconsult.labtests.database.CategoryItem
-import kotlinx.android.synthetic.main.bookmark_item.view.*
+import com.westsamoaconsult.labtests.R
+import com.westsamoaconsult.labtests.database.ArticleItem
+import kotlinx.android.synthetic.main.item_default.view.*
 
-class SecondViewAdapter(val mContext: Context, val categories: List<CategoryItem>, val listener: OnItemClickListener) :
+class SecondViewAdapter(val mContext: Context, val articles: List<ArticleItem>, val listener: OnItemClickListener) :
     RecyclerView.Adapter<SecondViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        return ViewHolder(inflater.inflate(com.westsamoaconsult.labtests.R.layout.bookmark_item, parent, false))
+        return ViewHolder(inflater.inflate(com.westsamoaconsult.labtests.R.layout.item_default, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val category = categories[position]
-        var logo = category.logo.replace('-', '_').toLowerCase()
-        logo = logo.substring(0, logo.lastIndexOf("."))
+        val article = articles[position]
 
-        val imageId = mContext.resources.getIdentifier(logo, "drawable", mContext.getPackageName())
         holder.apply {
-            imageView.setBackgroundResource(imageId)
-            textLabel.text = category.name
+            val scale = mContext.getResources().getDisplayMetrics().density
+            val pixels = (60 * scale + 0.5f)
+            viewLayout.layoutParams.height = pixels.toInt()
+
+            divider.setBackgroundResource(R.color.colorPrimary)
+
+            title.text = article.name
+            article.subtitle?.let {
+                subTitle.text = it
+                subTitle.visibility = View.VISIBLE
+            }
+
             itemView.setOnClickListener {
-                listener.onClick(category)
+                listener.onClick(article)
             }
         }
     }
 
-    override fun getItemCount() = categories.size
+    override fun getItemCount() = articles.size
 
 //    View HOLDER
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val imageView: ImageView = itemView.imageView
-        val textLabel: TextView = itemView.textLabel
+        val viewLayout = itemView.viewLayout
+        val title = itemView.title
+        val subTitle = itemView.subTitle
+        val divider = itemView.divider
     }
 
     // OnClickListener
     interface OnItemClickListener {
-        fun onClick(category: CategoryItem)
+        fun onClick(article: ArticleItem)
     }
 }
