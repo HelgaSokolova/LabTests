@@ -1,6 +1,7 @@
 package com.westsamoaconsult.labtests
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import com.westsamoaconsult.labtests.database.Database
 import com.westsamoaconsult.labtests.database.FBDatabase
 
@@ -15,8 +16,8 @@ class MainApplication : Application() {
     lateinit var FBDatabase: FBDatabase
     override fun onCreate() {
         super.onCreate()
-
         instance = this
+
         database = Database()
         FBDatabase = FBDatabase()
     }

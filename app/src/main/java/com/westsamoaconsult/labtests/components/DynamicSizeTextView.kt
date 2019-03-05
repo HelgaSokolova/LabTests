@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.TextView
+import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 
 class DynamicSizeTextView : TextView {
@@ -20,7 +21,7 @@ class DynamicSizeTextView : TextView {
     }
 
     fun setProperties() {
-        this.textSize = Utils.getGlobalTextSize().toFloat()
+        this.textSize = Utils.loadIntData(Constants.GLOBAL_TEXT_SIZE).toFloat()
         this.setTextColor(Color.parseColor("#616161"))
     }
 }

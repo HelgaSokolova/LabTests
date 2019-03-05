@@ -14,7 +14,7 @@ class FBDatabase {
     private fun retrieveArticles() {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val someArticleDict = dataSnapshot.getValue(Map::class.java)
+                val someArticleDict = dataSnapshot.getValue() as Map<String, Any>
                 articles = mutableMapOf<String, Any>()
                 articles["Articles"] = flattenDictionary(someArticleDict as Map<String, Any>)
                 usable = true;

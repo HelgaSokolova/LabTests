@@ -51,7 +51,11 @@ class Database {
     fun loadLastUsedTimes() {
         val values = Utils.loadData<Map<String, Date>>(Constants.Last_Opened_Times)
         for (item in allArticles) {
-            item.lastOpened = values[String.format("%d", item.itemId)]?.let { it } ?: run { Date(0)}
+            if (values == null || values[String.format("%d", item.itemId)] == null) {
+                item.lastOpened = Date(0)
+            } else {
+                item.lastOpened = values[String.format("%d", item.itemId)]!!
+            }
         }
     }
 
@@ -76,7 +80,12 @@ class Database {
     fun loadFavorites() {
         val values = Utils.loadData<Map<String, Boolean>>(Constants.Favorites)
         for (item in allArticles) {
-            item.isFavorite = values[String.format("%d", item.itemId)] as Boolean
+
+            if (values == null || values[String.format("%d", item.itemId)] == null) {
+                item.isFavorite = false
+            } else {
+                item.isFavorite = values[String.format("%d", item.itemId)] as Boolean
+            }
         }
     }
 
