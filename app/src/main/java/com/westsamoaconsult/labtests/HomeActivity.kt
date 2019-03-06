@@ -3,18 +3,22 @@ package com.westsamoaconsult.labtests
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.view.MenuItem
 import com.westsamoaconsult.labtests.bookmark.FirstViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
+import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.info.InfoViewFragment
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.main_activity.*
 
 
-class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        supportFragmentManager!!.addOnBackStackChangedListener(this)
 
         setTitle("Categories")
 
@@ -42,10 +46,8 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         return Utils.replaceFragment(fragment, supportFragmentManager, R.id.fragmentContainer)
     }
 
-    override fun onBackPressed() {
-        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
-
-        (fragment as? IOnBackPressed)?.onBackPressed()
-        super.onBackPressed()
+    override fun onBackStackChanged() {
+        val fragment = supportFragmentManager!!.findFragmentById(com.westsamoaconsult.labtests.R.id.fragmentContainer)
+        (fragment as BaseFragment).onForeground()
     }
 }

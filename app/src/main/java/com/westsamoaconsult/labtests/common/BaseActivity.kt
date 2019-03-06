@@ -24,8 +24,4 @@ open class BaseActivity : AppCompatActivity() {
             btnBack.visibility = View.GONE
         }
     }
-
-    interface IOnBackPressed {
-        fun onBackPressed()
-    }
 }
