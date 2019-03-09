@@ -20,6 +20,7 @@ class FirstViewFragment: BaseFragment(), FirstViewAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onForeground()
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = FirstViewAdapter(context!!, MainApplication.instance.database.allCategories, this)

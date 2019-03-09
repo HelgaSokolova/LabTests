@@ -20,8 +20,6 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
         supportFragmentManager!!.addOnBackStackChangedListener(this)
 
-        setTitle("Categories")
-
         //loading the default fragment
         Utils.replaceFragment(FirstViewFragment(), supportFragmentManager, R.id.fragmentContainer)
 
@@ -34,11 +32,9 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
         when (item.itemId) {
             R.id.bookmarks -> {
-                setTitle("Categories")
                 fragment = FirstViewFragment()
             }
             else -> {
-                setTitle("More")
                 fragment = InfoViewFragment()
             }
         }
