@@ -31,7 +31,11 @@ class DynamicSizeTextView : TextView {
             }
         }
 
-        this.textSize = Utils.loadIntData(Constants.GLOBAL_TEXT_SIZE).toFloat()
+        Utils.loadData<Int>(Constants.GLOBAL_TEXT_SIZE)?.let {
+            this.textSize = it.toFloat()
+        } ?: run {
+            this.textSize = 16.toFloat()
+        }
         this.setTextColor(Color.parseColor(textColor))
     }
 }

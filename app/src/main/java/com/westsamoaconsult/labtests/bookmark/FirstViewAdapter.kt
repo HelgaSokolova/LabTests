@@ -24,7 +24,7 @@ class FirstViewAdapter(val mContext: Context, val categories: List<CategoryItem>
         var logo = category.logo.replace('-', '_').toLowerCase()
         logo = logo.substring(0, logo.lastIndexOf("."))
 
-        val imageId = mContext.resources.getIdentifier(logo, "drawable", mContext.getPackageName())
+        val imageId = mContext.resources.getIdentifier(logo, "drawable", mContext.packageName)
         holder.apply {
             imageView.setBackgroundResource(imageId)
             textLabel.text = category.name

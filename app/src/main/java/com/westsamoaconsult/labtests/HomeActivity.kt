@@ -46,4 +46,9 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         val fragment = supportFragmentManager!!.findFragmentById(com.westsamoaconsult.labtests.R.id.fragmentContainer)
         (fragment as BaseFragment).onForeground()
     }
+
+    override fun onRightButtonPressed() {
+        val fragment = supportFragmentManager!!.findFragmentById(com.westsamoaconsult.labtests.R.id.fragmentContainer)
+        (fragment as BaseFragment).onRightButtonPressed()
+    }
 }

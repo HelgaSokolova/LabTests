@@ -8,8 +8,11 @@ open class BaseActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        btnBack.setOnClickListener {
+        btnLeft.setOnClickListener {
             onBackPressed()
+        }
+        btnRight.setOnClickListener{
+            onRightButtonPressed()
         }
     }
 
@@ -19,9 +22,33 @@ open class BaseActivity : AppCompatActivity() {
 
     fun setBackButtonVisible(visible: Boolean) {
         if (visible) {
-            btnBack.visibility = View.VISIBLE
+            btnLeft.visibility = View.VISIBLE
         } else {
-            btnBack.visibility = View.GONE
+            btnLeft.visibility = View.GONE
         }
     }
+
+    fun setRightButtonVisible(visible: Boolean, label: String) {
+        if (visible) {
+            btnRight.visibility = View.VISIBLE
+            btnRightImage.visibility = View.GONE
+            btnRightText.visibility = View.VISIBLE
+            btnRightText.text = label
+        } else {
+            btnRight.visibility = View.GONE
+        }
+    }
+
+    fun setRightButtonVisible(visible: Boolean, iconRes: Int) {
+        if (visible) {
+            btnRight.visibility = View.VISIBLE
+            btnRightText.visibility = View.GONE
+            btnRightImage.visibility = View.VISIBLE
+            btnRightImage.setImageResource(iconRes)
+        } else {
+            btnRight.visibility = View.GONE
+        }
+    }
+
+    open fun onRightButtonPressed() {}
 }

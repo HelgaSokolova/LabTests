@@ -1,14 +1,17 @@
 package com.westsamoaconsult.labtests.bookmark
 
+import android.icu.text.Normalizer.YES
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.MainApplication
+import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.database.ArticleItem
+import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
 
 
@@ -35,7 +38,7 @@ class SecondViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
     }
 
     override fun onClick(article: ArticleItem) {
-
+        Utils.addFragment(DetailViewFragment.newInstance(article), activity!!.supportFragmentManager, R.id.fragmentContainer)
     }
 
     override fun onForeground() {

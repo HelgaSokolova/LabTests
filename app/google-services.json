@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "384449327245-vimef8t7sdbungc0ni7h07v4pouold9t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.westsamoaconsult.labtests",
+            "certificate_hash": "40c5ed717dc7b1237d7cfa81d10a4429cd1d9f7d"
+          }
+        },
+        {
           "client_id": "384449327245-a0r8qku453df3blesjc5p4s6kptb79ef.apps.googleusercontent.com",
           "client_type": 3
         }

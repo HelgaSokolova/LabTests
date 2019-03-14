@@ -1,25 +1,22 @@
 package com.westsamoaconsult.labtests.utils
 
+import android.app.Activity
+import android.content.SharedPreferences
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v7.app.AlertDialog
 import com.google.gson.Gson
 import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
 import kotlin.text.Charsets.UTF_8
 
 object Utils {
-    val settings by lazy { MainApplication.instance.getSharedPreferences(Constants.PREFS_NAME, 0) }
-    val editor by lazy { settings.edit() }
+    val settings: SharedPreferences by lazy { MainApplication.instance.getSharedPreferences(Constants.PREFS_NAME, 0) }
+    private val editor: SharedPreferences.Editor by lazy { settings.edit() }
 
-    fun saveData(key: String, value: String) = editor.putString(key, value).commit()
-    fun loadStringData(key: String) = settings.getString(key, "")
-
-    fun saveData(key: String, value: Int) = editor.putInt(key, value).commit()
-    fun loadIntData(key: String) : Int = settings.getInt(key, -1)
-
-    fun saveData(key: String, value: Any) = saveData(key, Gson().toJson(value))
+    fun saveData(key: String, value: Any) = editor.putString(key, Gson().toJson(value)).commit()
     @Suppress("UNCHECKED_CAST")
-    inline fun <reified T: Any> loadData(key: String) = Gson().fromJson(loadStringData(key), T::class.java)
+    inline fun <reified T: Any> loadData(key: String): T? = Gson().fromJson(settings.getString(key, ""), T::class.java)
 
     fun loadJSONFromAsset(fileName: String): String {
         val inputStream = MainApplication.instance.getAssets().open(fileName)
@@ -46,5 +43,13 @@ object Utils {
         }
         fragmentTransaction.commit()
         return true
+    }
+
+    fun showAlertDialog(activity: Activity, title: String? = null, message: String) {
+        AlertDialog.Builder(activity)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            .show()
     }
 }

@@ -25,12 +25,12 @@ class InfoViewFragment: Fragment(), RadioGroup.OnCheckedChangeListener, InfoAdap
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        val defaultRangeId = when (Utils.loadStringData(Constants.REFERENCE_RANGE)) {
+        val defaultRangeId = when (Utils.loadData<String>(Constants.REFERENCE_RANGE)) {
             "SI" -> R.id.buttonSI
             "US" -> R.id.buttonUS
             else -> R.id.buttonSI
         }
-        val defaultTextId = when (Utils.loadIntData(Constants.GLOBAL_TEXT_SIZE)) {
+        val defaultTextId = when (Utils.loadData<Int>(Constants.GLOBAL_TEXT_SIZE)) {
             14 -> R.id.buttonSmall
             16 -> R.id.buttonMedium
             19 -> R.id.buttonLarge

@@ -44,10 +44,10 @@ class SecondViewAdapter(val mContext: Context, val articles: List<ArticleItem>, 
 
 //    View HOLDER
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val viewLayout = itemView.viewLayout
-        val title = itemView.title
-        val subTitle = itemView.subTitle
-        val divider = itemView.divider
+        val viewLayout = itemView.viewLayout!!
+        val title = itemView.title!!
+        val subTitle = itemView.subTitle!!
+        val divider = itemView.divider!!
     }
 
     // OnClickListener

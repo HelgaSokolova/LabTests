@@ -1,9 +1,10 @@
 package com.westsamoaconsult.labtests
 
 import android.app.Application
-import com.google.firebase.FirebaseApp
 import com.westsamoaconsult.labtests.database.Database
 import com.westsamoaconsult.labtests.database.FBDatabase
+import com.westsamoaconsult.labtests.utils.Constants
+import com.westsamoaconsult.labtests.utils.Utils
 
 class MainApplication : Application() {
     companion object {
