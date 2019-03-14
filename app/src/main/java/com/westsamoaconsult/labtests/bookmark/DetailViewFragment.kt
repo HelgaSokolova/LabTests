@@ -118,10 +118,10 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
             data = MainApplication.instance.FBDatabase.articleWithNumericAddress(dataItem.address.toInt()) as MutableMap<String, Any>
         }
 
-//        if (data == null) {
-//            val db = Utils.loadJSONFromAsset(String.format("%s.json", dataItem.address));
-//            val typeOfHashMap = object : TypeToken<MutableMap<String, Any>>() {}.type
-//            data = Gson().fromJson<MutableMap<String, Any>>(db, typeOfHashMap)
-//        }
+        if (data == null) {
+            val db = Utils.loadJSONFromAsset(String.format("%s.json", dataItem.address));
+            val typeOfHashMap = object : TypeToken<MutableMap<String, Any>>() {}.type
+            data = Gson().fromJson<MutableMap<String, Any>>(db, typeOfHashMap)
+        }
     }
 }
