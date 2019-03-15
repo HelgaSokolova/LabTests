@@ -33,6 +33,7 @@ class RecentsViewAdapter(private val recents: List<ArticleItem>, val listener: S
             }
 
             itemView.setOnClickListener {
+                itemView.isEnabled = false
                 listener.onClick(article.itemId)
             }
         }

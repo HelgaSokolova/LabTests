@@ -41,6 +41,7 @@ class SecondViewAdapter(private val mContext: Context, private val articles: Lis
             }
 
             itemView.setOnClickListener {
+                itemView.isEnabled = false
                 listener.onClick(article.itemId)
             }
         }
