@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @Serializable
-data class ArticleItem(
+class ArticleItem(
     @Optional var itemId: Int = 0,
     val categories: List<Int>,
     val name: String,

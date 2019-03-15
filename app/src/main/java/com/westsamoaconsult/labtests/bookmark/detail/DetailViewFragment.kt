@@ -142,7 +142,7 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
 
         (data!!.get("Article") as ArrayList<*>).forEach {
             (it as Map<*, *>).apply {
-                itemList.add(SectionDetailItem(get("header") as String, itemList.size == 0))
+                itemList.add(SectionDetailItem(get("header") as String))
 
                 val paragraphList: ArrayList<*>
                 if (Utils.loadData<String>(Constants.REFERENCE_RANGE) != "US") {
@@ -173,6 +173,7 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
 
                     itemList.add(TextDetailItem(displayString))
                 }
+                itemList.add(FooterDetailItem())
             }
         }
 

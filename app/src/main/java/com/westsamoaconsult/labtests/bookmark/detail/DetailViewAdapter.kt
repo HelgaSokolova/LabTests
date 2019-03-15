@@ -26,6 +26,7 @@ class DetailViewAdapter(private val detailList: List<DetailViewItem>) :
             DetailViewItem.SECTION -> SectionViewHolder(inflater.inflate(R.layout.info_item_section, parent, false))
             DetailViewItem.HEADER -> HeaderDetailViewHolder(inflater.inflate(R.layout.detail_item_header, parent, false))
             DetailViewItem.IMAGE -> ImageViewHolder(inflater.inflate(R.layout.detail_item_image, parent, false))
+            DetailViewItem.FOOTER -> FooterViewHolder(inflater.inflate(R.layout.detail_item_footer, parent, false))
             else -> TextViewHolder(inflater.inflate(R.layout.detail_item_text, parent, false))
         }
     }
@@ -43,18 +44,10 @@ class DetailViewAdapter(private val detailList: List<DetailViewItem>) :
         fun bindViews(item: DetailViewItem)
     }
 
-    class SectionViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
-        DetailItemViewHolder {
+    class SectionViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), DetailItemViewHolder {
         override fun bindViews(item: DetailViewItem) {
             item as SectionDetailItem
             itemView.apply {
-                var height = 30
-                if (!item.isFirst) {
-                    topBar.visibility = View.VISIBLE
-                    height = 50
-                }
-                viewLayout.layoutParams.height = (height * context.resources.displayMetrics.density + 0.5f).toInt()
-
                 sectionTitle.apply {
                     setBackgroundColor(Color.parseColor("#fcfcfd"))
                     text = item.description
@@ -68,8 +61,7 @@ class DetailViewAdapter(private val detailList: List<DetailViewItem>) :
         }
     }
 
-    class ImageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
-        DetailItemViewHolder {
+    class ImageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), DetailItemViewHolder {
         override fun bindViews(item: DetailViewItem) {
             item as ImageDetailItem
             var logo = item.imageName.replace('-', '_').toLowerCase()
@@ -82,13 +74,17 @@ class DetailViewAdapter(private val detailList: List<DetailViewItem>) :
         }
     }
 
-    class TextViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
-        DetailItemViewHolder {
+    class TextViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), DetailItemViewHolder {
         override fun bindViews(item: DetailViewItem) {
             item as TextDetailItem
             itemView.apply {
                 text.text = item.description.replace("\n", "\r\n")
             }
+        }
+    }
+
+    class FooterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), DetailItemViewHolder {
+        override fun bindViews(item: DetailViewItem) {
         }
     }
 }

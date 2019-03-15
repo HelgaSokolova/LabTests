@@ -9,24 +9,26 @@ abstract class DetailViewItem(
         const val HEADER = 1
         const val IMAGE = 2
         const val TEXT = 3
+        const val FOOTER = 4
     }
 }
 
-data class SectionDetailItem(
-    val description: String,
-    val isFirst: Boolean
+class SectionDetailItem(
+    val description: String
 ) : DetailViewItem(SECTION)
 
-data class HeaderDetailItem(
+class HeaderDetailItem(
     val description: String,
     val imageName: String,
     val listener: View.OnClickListener
 ) : DetailViewItem(HEADER)
 
-data class ImageDetailItem(
+class ImageDetailItem(
     val imageName: String
 ) : DetailViewItem(IMAGE)
 
-data class TextDetailItem(
+class TextDetailItem(
     val description: String
 ) : DetailViewItem(TEXT)
+
+class FooterDetailItem() : DetailViewItem(FOOTER)

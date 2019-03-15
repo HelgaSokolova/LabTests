@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 import java.util.*
 
 @Serializable
-data class DBItem (
+class DBItem (
     val Articles: List<ArticleItem>,
     val Categories: List<CategoryItem>
 )

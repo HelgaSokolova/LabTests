@@ -34,8 +34,6 @@
 
         </com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout>
 
-
-
     </LinearLayout>
 
     <com.westsamoaconsult.labtests.components.DynamicSizeTextView

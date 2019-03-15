@@ -14,7 +14,7 @@ abstract class InfoItem(
     }
 }
 
-data class SectionInfoItem(
+class SectionInfoItem(
     val description: String
 ) : InfoItem(InfoItem.SECTION)
 

@@ -4,7 +4,7 @@ import kotlinx.serialization.Optional
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CategoryItem(
+class CategoryItem(
     @Optional var autoId: Int = 0,
     val description: String,
     val logo: String,
