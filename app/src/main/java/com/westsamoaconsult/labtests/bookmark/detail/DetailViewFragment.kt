@@ -87,7 +87,6 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
         }
 
         loadHtmlFile()
-
         buildList()
     }
 

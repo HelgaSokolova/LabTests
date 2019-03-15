@@ -98,7 +98,9 @@ class Database {
             }
         }
         opened.sortByDescending { item -> item.lastOpened }
-        opened.dropLast(opened.size - 9)
+        if (opened.size > 10) {
+            opened.dropLast(opened.size - 9)
+        }
 
         return opened;
     }

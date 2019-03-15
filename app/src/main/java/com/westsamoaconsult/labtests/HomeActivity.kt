@@ -9,6 +9,7 @@ import com.westsamoaconsult.labtests.bookmark.first.FirstViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.info.InfoViewFragment
+import com.westsamoaconsult.labtests.recent.RecentsViewFragment
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -31,12 +32,9 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         val fragment: Fragment
 
         when (item.itemId) {
-            R.id.bookmarks -> {
-                fragment = FirstViewFragment()
-            }
-            else -> {
-                fragment = InfoViewFragment()
-            }
+            R.id.bookmarks -> { fragment = FirstViewFragment() }
+            R.id.recent -> { fragment = RecentsViewFragment() }
+            else -> { fragment = InfoViewFragment() }
         }
 
         return Utils.replaceFragment(fragment, supportFragmentManager, R.id.fragmentContainer)
