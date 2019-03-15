@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import com.westsamoaconsult.labtests.R
 import kotlinx.android.synthetic.main.detail_item_color.view.*
@@ -25,8 +26,8 @@ class ChangeColorAdapter(private val colors: Array<String>, private val listener
             val imageId = itemView.context.resources.getIdentifier(color, "drawable", itemView.context.packageName)
             imageView.setBackgroundResource(imageId)
 
-            itemView.setOnClickListener {
-                listener.onClick(color)
+            btnImage.setOnClickListener {
+                listener.onClick(colors[position])
             }
         }
     }
@@ -35,6 +36,7 @@ class ChangeColorAdapter(private val colors: Array<String>, private val listener
 
     //    View HOLDER
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val btnImage: FrameLayout = itemView.btnImage
         val imageView: ImageView = itemView.imageView
     }
 

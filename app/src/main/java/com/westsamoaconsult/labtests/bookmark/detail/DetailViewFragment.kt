@@ -38,6 +38,8 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
             }
         }
     }
+    private lateinit var bottomDialog: BottomSheetDialog
+    private lateinit var itemList: MutableList<DetailViewItem>
 
     private lateinit var dataItem: ArticleItem
     private lateinit var mFirebaseAnalytics: FirebaseAnalytics
@@ -57,6 +59,15 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity!!);
         dataItem = DateJson.parse(ArticleItem.serializer(), arguments!!.getString("articleItem")!!)
+
+        bottomDialog = BottomSheetDialog(activity!!)
+        val bottomSheet = layoutInflater.inflate(com.westsamoaconsult.labtests.R.layout.detail_change_color, null)
+        bottomSheet.apply {
+            btnCancel.setOnClickListener { bottomDialog.dismiss() }
+            recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            recyclerView.adapter = ChangeColorAdapter(dotImages1, this@DetailViewFragment)
+            bottomDialog.setContentView(this)
+        }
     }
 
     override fun onClick(article: ArticleItem) {
@@ -134,7 +145,7 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
     }
 
     private fun buildList() {
-        val itemList = mutableListOf<DetailViewItem>()
+        itemList = mutableListOf<DetailViewItem>()
 
         data!!.apply {
             (get("Article") as ArrayList<*>).forEach {
@@ -176,20 +187,21 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
     override fun onClick(v: View?) {
         when (v?.id) {
             com.westsamoaconsult.labtests.R.id.btnImage -> {
-                val dialog = BottomSheetDialog(activity!!)
-                val bottomSheet = layoutInflater.inflate(com.westsamoaconsult.labtests.R.layout.detail_change_color, null)
-                bottomSheet.apply {
-                    btnCancel.setOnClickListener { dialog.dismiss() }
-                    recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                    recyclerView.adapter = ChangeColorAdapter(dotImages1, this@DetailViewFragment)
-                    dialog.setContentView(this)
-                }
-                dialog.show()
+                bottomDialog.show()
             }
         }
     }
 
     override fun onClick(color: String) {
+        bottomDialog.dismiss()
 
+        var dict = Utils.loadData<MutableMap<String, String>>("customDots")
+        if (dict == null) {
+            dict = mutableMapOf()
+        }
+
+        dict.set(dataItem.address, color)
+        Utils.saveData("customDots", dict)
+        buildList()
     }
 }

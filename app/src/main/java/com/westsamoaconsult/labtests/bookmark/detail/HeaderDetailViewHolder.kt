@@ -10,6 +10,7 @@ class HeaderDetailViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
     override fun bindViews(item: DetailViewItem) {
         item as HeaderDetailItem
         var logo = item.imageName.replace('-', '_').toLowerCase()
+        logo = logo.replace(' ', '_').toLowerCase()
         logo = logo.substring(0, logo.lastIndexOf("."))
 
         itemView.apply {
