@@ -42,23 +42,23 @@ class Database {
     }
 
     fun saveLastUsedTimes() {
-        val values = mutableMapOf<String, Date>()
+        val values = mutableMapOf<String, Long>()
         for (item: ArticleItem in allArticles) {
             if (item.lastOpened!! > Date(0)) {
-                values[String.format("%d", item.itemId)] = item.lastOpened!!
+                values[String.format("%d", item.itemId)] = item.lastOpened!!.time
             }
         }
 
         Utils.saveData(Constants.Last_Opened_Times, values)
     }
 
-    fun loadLastUsedTimes() {
-        val values = Utils.loadData<Map<String, Date>>(Constants.Last_Opened_Times)
+    private fun loadLastUsedTimes() {
+        val values = Utils.loadData<Map<String, Long>>(Constants.Last_Opened_Times)
         for (item in allArticles) {
             if (values == null || values[String.format("%d", item.itemId)] == null) {
                 item.lastOpened = Date(0)
             } else {
-                item.lastOpened = values[String.format("%d", item.itemId)]!!
+                item.lastOpened = Date(values[String.format("%d", item.itemId)]!!)
             }
         }
     }
