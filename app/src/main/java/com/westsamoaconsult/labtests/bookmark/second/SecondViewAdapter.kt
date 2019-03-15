@@ -41,7 +41,7 @@ class SecondViewAdapter(private val mContext: Context, private val articles: Lis
             }
 
             itemView.setOnClickListener {
-                listener.onClick(article)
+                listener.onClick(article.itemId)
             }
         }
     }
@@ -58,6 +58,6 @@ class SecondViewAdapter(private val mContext: Context, private val articles: Lis
 
     // OnClickListener
     interface OnItemClickListener {
-        fun onClick(article: ArticleItem)
+        fun onClick(articleId: Int)
     }
 }

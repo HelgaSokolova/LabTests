@@ -38,8 +38,8 @@ class SecondViewFragment: BaseFragment(),
         recyclerView.adapter = SecondViewAdapter(context!!, articles, this)
     }
 
-    override fun onClick(article: ArticleItem) {
-        Utils.addFragment(DetailViewFragment.newInstance(article), activity!!.supportFragmentManager, R.id.fragmentContainer)
+    override fun onClick(articleId: Int) {
+        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentContainer)
     }
 
     override fun onForeground() {

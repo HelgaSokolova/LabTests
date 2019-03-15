@@ -33,7 +33,7 @@ class RecentsViewAdapter(private val recents: List<ArticleItem>, val listener: S
             }
 
             itemView.setOnClickListener {
-                listener.onClick(article)
+                listener.onClick(article.itemId)
             }
         }
     }

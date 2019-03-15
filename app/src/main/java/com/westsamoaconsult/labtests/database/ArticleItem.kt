@@ -36,39 +36,8 @@ data class ArticleItem(
     @Optional val linkcount: Int? = null,
     @Optional val linkarray: MutableList<Any> = ArrayList()
 ) {
-    fun initWithNode(node: Map<String, Map<Any, Any>?>, num: Int) {
+    fun initWithNode(num: Int) {
         itemId = num
-
-        linkcount?.let {
-            for (i in 0 until it) {
-                val link12 = String.format("Link%d", i)
-                linkarray.add(node[link12] as MutableMap<Any, Any>)
-            }
-        }
-
-        Link0?.let {
-            pubmed = it["url"] as String
-            pubname = it["name"] as String
-            publogo = it["image"] as String
-        }
-
-        Link1?.let {
-            link = it["url"] as String
-            wikiname = it["name"] as String
-            wikilogo = it["image"] as String
-        }
-
-        Link2?.let {
-            emedicine = it["url"] as String
-            emediname = it["name"] as String
-            emedilogo = it["image"] as String
-        }
-
-        Link3?.let {
-            url = it["url"] as String
-            gname = it["name"] as String
-            glogo = it["image"] as String
-        }
     }
 }
 

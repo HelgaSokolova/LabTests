@@ -26,18 +26,7 @@ import kotlinx.serialization.json.Json
 import java.util.*
 
 
-class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener, View.OnClickListener,
-    ChangeColorAdapter.OnItemClickListener {
-
-    companion object {
-        private val DateJson = Json(indented = true).apply { install(SimpleModule(Date::class, DateSerializer)) }
-
-        fun newInstance(article: ArticleItem) = DetailViewFragment().apply {
-            arguments = Bundle().apply {
-                putString("articleItem", DateJson.stringify(ArticleItem.serializer(), article))
-            }
-        }
-    }
+class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapter.OnItemClickListener {
     private lateinit var bottomDialog: BottomSheetDialog
     private lateinit var itemList: MutableList<DetailViewItem>
 
@@ -46,6 +35,12 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
     private var data: MutableMap<String, Any>? = null;
 
     private val dotImages1 = arrayOf("Black.png", "Gold.png", "Gray.png", "Green.png", "Lavender.png", "Light Blue.png", "Light Green.png", "Orange.png", "Pink.png", "Red.png", "Royal Blue.png", "Tan.png", "White.png", "Yellow.png", "CSF.png", "Pico70.png");
+
+    companion object {
+        fun newInstance(articleId: Int) = DetailViewFragment().apply {
+            arguments = Bundle().apply { putInt("articleId", articleId) }
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(com.westsamoaconsult.labtests.R.layout.bookmark_first_fragment, container, false)
@@ -58,7 +53,9 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
         recyclerView.setBackgroundColor(Color.parseColor("#efeff4"))
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity!!);
-        dataItem = DateJson.parse(ArticleItem.serializer(), arguments!!.getString("articleItem")!!)
+        dataItem = MainApplication.instance.database.allArticles.first {
+            item -> item.itemId == arguments!!.getInt("articleId")
+        }
 
         bottomDialog = BottomSheetDialog(activity!!)
         val bottomSheet = layoutInflater.inflate(com.westsamoaconsult.labtests.R.layout.detail_change_color, null)
@@ -68,9 +65,6 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
             recyclerView.adapter = ChangeColorAdapter(dotImages1, this@DetailViewFragment)
             bottomDialog.setContentView(this)
         }
-    }
-
-    override fun onClick(article: ArticleItem) {
     }
 
     override fun onForeground() {
@@ -124,7 +118,7 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
                 }
                 .show()
         }
-        dataItem.lastOpened = Date(0)
+        dataItem.lastOpened = Date()
         MainApplication.instance.database.saveLastUsedTimes()
 
         val bundle = Bundle().apply {

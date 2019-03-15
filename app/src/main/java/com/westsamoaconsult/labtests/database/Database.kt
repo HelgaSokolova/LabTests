@@ -22,6 +22,10 @@ class Database {
 
         val dbItem = Json.nonstrict.parse(DBItem.serializer(), db)
         allArticles = dbItem.Articles
+        var i = 1
+        allArticles.forEach {
+            it.initWithNode(i++)
+        }
 
         loadLastUsedTimes()
         loadFavorites()
@@ -30,7 +34,7 @@ class Database {
         allArticlesSorted.sortBy { item -> item.name }
 
         allCategories = dbItem.Categories
-        var i = 1
+        i = 1
         for (item in allCategories) {
             item.autoId = i
             i++
