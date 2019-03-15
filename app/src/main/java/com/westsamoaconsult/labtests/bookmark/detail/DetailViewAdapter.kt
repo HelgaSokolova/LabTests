@@ -87,7 +87,7 @@ class DetailViewAdapter(private val detailList: List<DetailViewItem>) :
         override fun bindViews(item: DetailViewItem) {
             item as TextDetailItem
             itemView.apply {
-                text.text = item.description
+                text.text = item.description.replace("\n", "\r\n")
             }
         }
     }

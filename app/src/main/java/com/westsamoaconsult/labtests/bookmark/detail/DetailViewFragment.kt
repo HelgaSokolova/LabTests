@@ -116,7 +116,7 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
 
             AlertDialog.Builder(activity!!)
                 .setTitle("Reference Range")
-                .setMessage("How would you like the Reference Range to be displayed?\\n\\n(It can be changed under 'More')")
+                .setMessage("How would you like the Reference Range to be displayed?\r\n\r\n(It can be changed under 'More')")
                 .setPositiveButton("SI") { dialog, _ ->
                     Utils.saveData(Constants.REFERENCE_RANGE, "SI"); loadHtmlFile(); dialog.dismiss()
                 }
