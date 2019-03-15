@@ -1,5 +1,7 @@
 package com.westsamoaconsult.labtests.bookmark.detail
 
+import android.view.View
+
 abstract class DetailViewItem(
     val type: Int) {
     companion object {
@@ -17,7 +19,8 @@ data class SectionDetailItem(
 
 data class HeaderDetailItem(
     val description: String,
-    val imageName: String
+    val imageName: String,
+    val listener: View.OnClickListener
 ) : DetailViewItem(HEADER)
 
 data class ImageDetailItem(

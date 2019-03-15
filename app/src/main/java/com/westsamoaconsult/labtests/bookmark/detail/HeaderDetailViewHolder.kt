@@ -27,6 +27,8 @@ class HeaderDetailViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
 
             val imageId = context.resources.getIdentifier(logo, "drawable", context.packageName)
             headerImage.setBackgroundResource(imageId)
+
+            btnImage.setOnClickListener(item.listener)
         }
     }
 }

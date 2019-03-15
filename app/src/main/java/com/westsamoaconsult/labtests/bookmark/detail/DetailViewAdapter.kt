@@ -91,9 +91,4 @@ class DetailViewAdapter(private val detailList: List<DetailViewItem>) :
             }
         }
     }
-
-    // OnClickListener
-    interface OnItemClickListener {
-        fun onClick(description: String)
-    }
 }

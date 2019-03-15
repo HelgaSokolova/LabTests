@@ -1,6 +1,8 @@
 package com.westsamoaconsult.labtests.bookmark.detail
 
 import android.graphics.Color
+import android.icu.text.Normalizer.NO
+import android.icu.text.Normalizer.YES
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
@@ -20,13 +22,18 @@ import com.westsamoaconsult.labtests.database.DateSerializer
 import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
+import kotlinx.android.synthetic.main.item_default.*
 import kotlinx.serialization.context.SimpleModule
 import kotlinx.serialization.json.Json
 import java.util.*
 import kotlin.collections.ArrayList
+import android.support.design.widget.BottomSheetDialog
+import android.R
 
 
-class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener {
+
+
+class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener, View.OnClickListener {
     companion object {
         private val DateJson = Json(indented = true).apply { install(SimpleModule(Date::class, DateSerializer)) }
 
@@ -67,9 +74,9 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
             setTitle(dataItem.name)
             setBackButtonVisible(true)
             if (dataItem.isFavorite) {
-                setRightButtonVisible(true, R.drawable.star_filled_22)
+                setRightButtonVisible(true, com.westsamoaconsult.labtests.R.drawable.star_filled_22)
             } else {
-                setRightButtonVisible(true, R.drawable.star_nonfilled_22)
+                setRightButtonVisible(true, com.westsamoaconsult.labtests.R.drawable.star_nonfilled_22)
             }
         }
 
@@ -81,11 +88,11 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
     override fun onRightButtonPressed() {
         if (dataItem.isFavorite) {
             dataItem.isFavorite = false
-            (activity as BaseActivity).setRightButtonVisible(true, R.drawable.star_nonfilled_22)
+            (activity as BaseActivity).setRightButtonVisible(true, com.westsamoaconsult.labtests.R.drawable.star_nonfilled_22)
         }
         else {
             dataItem.isFavorite = true
-            (activity as BaseActivity).setRightButtonVisible(true, R.drawable.star_filled_22)
+            (activity as BaseActivity).setRightButtonVisible(true, com.westsamoaconsult.labtests.R.drawable.star_filled_22)
         }
 
         val bundle = Bundle().apply {
@@ -155,7 +162,7 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
                         val dict = Utils.loadData<Map<String, String>>("customDots")
 
                         dict?.get(dataItem.address)?.let {
-                            itemList.add(HeaderDetailItem(displayString, it))
+                            itemList.add(HeaderDetailItem(displayString, it, this@DetailViewFragment))
                         } ?: run {
                             val imageName = (data!!.get("dot_image") as ArrayList<*>)[0] as String
                             itemList.add(HeaderDetailItem(displayString, imageName))
@@ -170,5 +177,64 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
         }
 
         recyclerView.adapter = DetailViewAdapter(itemList)
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            com.westsamoaconsult.labtests.R.id.btnImage -> {
+                val dialog = BottomSheetDialog(activity!!)
+//                dialog.setContentView=
+
+                dialog.show()
+
+
+//                NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+//                paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+//                paragraphStyle.alignment = NSTextAlignmentCenter;
+//
+//                NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"C H A N G E   T H E   C O L O R" attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:14], NSParagraphStyleAttributeName : paragraphStyle}];
+//
+//                CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*0.85, 45)];
+//                [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                button.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+//                [button setTitle:@"Cancel" forState:UIControlStateNormal];
+//                button.layer.cornerRadius = 4.0f;
+//                button.backgroundColor = [DesignUtils blueColor];
+//                button.selectionHandler = ^(CNPPopupButton *button){
+//                    [self.popupController dismissPopupControllerAnimated:YES];
+//                };
+//
+//                UILabel *titleLabel = [[UILabel alloc] init];
+//                titleLabel.numberOfLines = 0;
+//                titleLabel.attributedText = title;
+//                titleLabel.textColor = [DesignUtils blueColor];
+//
+//                UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.tabBarController.view.frame.size.height, [[UIScreen mainScreen] bounds].size.width*0.85, 100)];
+//                scrollView.scrollEnabled = YES;
+//                scrollView.backgroundColor = [UIColor whiteColor];
+//
+//                [scrollView setPagingEnabled:NO];
+//                scrollView.showsHorizontalScrollIndicator = NO;
+//
+//                int multiply = 0;
+//                for (NSString *image in dotImages1) {
+//                    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(10+(70*multiply), 20, 60, 60)];
+//                    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+//                    [button addTarget:self action:@selector(buttonChanged:) forControlEvents:UIControlEventTouchUpInside];
+//                    button.tag = 300+multiply;
+//                    [scrollView addSubview:button];
+//                    multiply++;
+//                }
+//
+//                scrollView.contentSize = CGSizeMake(10+(70*dotImages1.count), 100);
+//                [scrollView setScrollEnabled:YES];
+//
+//                self.popupController = [[CNPPopupController alloc] initWithContents:@[titleLabel, scrollView, button]];
+//                self.popupController.theme = [CNPPopupTheme defaultTheme];
+//                self.popupController.theme.popupStyle = CNPPopupStyleActionSheet;
+//                self.popupController.delegate = self;
+//                [self.popupController presentPopupControllerAnimated:YES];
+            }
+        }
     }
 }
