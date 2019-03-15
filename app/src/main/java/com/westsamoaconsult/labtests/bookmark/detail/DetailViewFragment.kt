@@ -75,7 +75,7 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
 
         loadHtmlFile()
 
-        updateList()
+        buildList()
     }
 
     override fun onRightButtonPressed() {
@@ -131,13 +131,13 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
         }
     }
 
-    private fun updateList() {
+    private fun buildList() {
         val itemList = mutableListOf<DetailViewItem>()
 
         data!!.apply {
             (get("Article") as ArrayList<*>).forEach {
                 (it as Map<*, *>).apply {
-                    itemList.add(SectionDetailItem(get("header") as String))
+                    itemList.add(SectionDetailItem(get("header") as String, itemList.size == 0))
 
                     val displayString: String
                     if (Utils.loadData<String>(Constants.REFERENCE_RANGE) != "US") {

@@ -11,7 +11,8 @@ abstract class DetailViewItem(
 }
 
 data class SectionDetailItem(
-    val description: String
+    val description: String,
+    val isFirst: Boolean
 ) : DetailViewItem(SECTION)
 
 data class HeaderDetailItem(

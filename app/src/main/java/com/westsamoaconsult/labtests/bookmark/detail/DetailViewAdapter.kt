@@ -48,7 +48,12 @@ class DetailViewAdapter(private val detailList: List<DetailViewItem>) :
         override fun bindViews(item: DetailViewItem) {
             item as SectionDetailItem
             itemView.apply {
-                viewLayout.layoutParams.height = (20 * context.resources.displayMetrics.density + 0.5f).toInt()
+                var height = 20
+                if (!item.isFirst) {
+                    topBar.visibility = View.VISIBLE
+                    height = 40
+                }
+                viewLayout.layoutParams.height = (height * context.resources.displayMetrics.density + 0.5f).toInt()
 
                 sectionTitle.apply {
                     setBackgroundColor(Color.parseColor("#fcfcfd"))
