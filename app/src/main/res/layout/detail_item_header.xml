@@ -3,10 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp"
+    android:padding="16dp"
     android:orientation="vertical"
     android:background="@android:color/white">
 
@@ -19,6 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:lineSpacingExtra="5dp"
             android:gravity="center_vertical"
             android:textColor="#555"
             android:text="Text"/>
@@ -36,6 +34,7 @@
         android:id="@+id/secondText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:lineSpacingExtra="5dp"
         android:textColor="#555"
         android:text="Text"/>
 

@@ -19,6 +19,9 @@ class HeaderDetailViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
                     val lastVisibleLineNumber = layout.getLineForVertical(scrollY + height)
                     val end = layout.getLineEnd(lastVisibleLineNumber)
                     itemView.secondText.text = item.description.substring(end, item.description.length)
+                    if (itemView.secondText.text.isEmpty()) {
+                        itemView.secondText.visibility = View.GONE
+                    }
                 }
             }
 
