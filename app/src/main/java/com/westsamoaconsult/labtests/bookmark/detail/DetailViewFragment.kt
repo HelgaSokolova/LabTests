@@ -1,9 +1,8 @@
 package com.westsamoaconsult.labtests.bookmark.detail
 
 import android.graphics.Color
-import android.icu.text.Normalizer.NO
-import android.icu.text.Normalizer.YES
 import android.os.Bundle
+import android.support.design.widget.BottomSheetDialog
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -13,7 +12,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.westsamoaconsult.labtests.MainApplication
-import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.bookmark.second.SecondViewAdapter
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
@@ -21,16 +19,11 @@ import com.westsamoaconsult.labtests.database.ArticleItem
 import com.westsamoaconsult.labtests.database.DateSerializer
 import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
+import kotlinx.android.synthetic.main.detail_change_color.view.*
 import kotlinx.android.synthetic.main.info_fragment.*
-import kotlinx.android.synthetic.main.item_default.*
 import kotlinx.serialization.context.SimpleModule
 import kotlinx.serialization.json.Json
 import java.util.*
-import kotlin.collections.ArrayList
-import android.support.design.widget.BottomSheetDialog
-import android.R
-
-
 
 
 class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener, View.OnClickListener {
@@ -165,7 +158,7 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
                             itemList.add(HeaderDetailItem(displayString, it, this@DetailViewFragment))
                         } ?: run {
                             val imageName = (data!!.get("dot_image") as ArrayList<*>)[0] as String
-                            itemList.add(HeaderDetailItem(displayString, imageName))
+                            itemList.add(HeaderDetailItem(displayString, imageName, this@DetailViewFragment))
                         }
                         return@forEach
                     }
@@ -183,8 +176,9 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
         when (v?.id) {
             com.westsamoaconsult.labtests.R.id.btnImage -> {
                 val dialog = BottomSheetDialog(activity!!)
-//                dialog.setContentView=
-
+                val bottomSheet = layoutInflater.inflate(com.westsamoaconsult.labtests.R.layout.detail_change_color, null)
+                bottomSheet.btnCancel.setOnClickListener { dialog.dismiss() }
+                dialog.setContentView(bottomSheet)
                 dialog.show()
 
 

@@ -44,7 +44,7 @@
                         android:layout_height="30dp"
                         android:layout_marginEnd="-5dp"
                         android:tint="#c7c7cc"
-                        android:src="@drawable/ic_arrow_next"/>
+                        android:background="@drawable/ic_arrow_next"/>
             </LinearLayout>
 
             <View
