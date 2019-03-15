@@ -40,8 +40,8 @@ class Database {
     fun saveLastUsedTimes() {
         val values = mutableMapOf<String, Date>()
         for (item: ArticleItem in allArticles) {
-            if (0 < item.lastOpened.compareTo(Date(0))) {
-                values[String.format("%d", item.itemId)] = item.lastOpened
+            if (item.lastOpened!! > Date(0)) {
+                values[String.format("%d", item.itemId)] = item.lastOpened!!
             }
         }
 
@@ -93,7 +93,7 @@ class Database {
         val opened = mutableListOf<ArticleItem>()
 
         for (item in allArticles) {
-            if (0 < item.lastOpened.compareTo(Date(0))) {
+            if (item.lastOpened!! > Date(0)) {
                 opened.add(item)
             }
         }

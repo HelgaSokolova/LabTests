@@ -21,11 +21,10 @@ class InfoAdapter(val infoList: List<InfoItem>) :
         val inflater = LayoutInflater.from(parent.context)
 
         return when (viewType) {
-            InfoItem.TYPE.SECTION -> SectionViewHolder(inflater.inflate(R.layout.info_item_section, parent, false))
-            InfoItem.TYPE.RANGE -> RangeViewHolder(inflater.inflate(R.layout.info_item_range, parent, false))
-            InfoItem.TYPE.TEXTSIZE -> TextSizeViewHolder(inflater.inflate(R.layout.info_item_text_size, parent, false))
-            InfoItem.TYPE.NORMAL -> DefaultViewHolder(inflater.inflate(R.layout.item_default, parent, false))
-            else -> SectionViewHolder(inflater.inflate(R.layout.info_item_section, parent, false))
+            InfoItem.SECTION -> SectionViewHolder(inflater.inflate(R.layout.info_item_section, parent, false))
+            InfoItem.RANGE -> RangeViewHolder(inflater.inflate(R.layout.info_item_range, parent, false))
+            InfoItem.TEXTSIZE -> TextSizeViewHolder(inflater.inflate(R.layout.info_item_text_size, parent, false))
+            else -> DefaultViewHolder(inflater.inflate(R.layout.item_default, parent, false))
         }
     }
 

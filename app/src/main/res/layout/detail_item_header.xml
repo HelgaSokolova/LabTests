@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.westsamoaconsult.labtests.components.DynamicSizeTextView
+            android:id="@+id/firstText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="#555"
+            android:text="Text"/>
+
+        <ImageView
+            android:id="@+id/headerImage"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_arrow_next"/>
+
+    </LinearLayout>
+
+    <com.westsamoaconsult.labtests.components.DynamicSizeTextView
+        android:id="@+id/secondText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#555"
+        android:text="Text"/>
+
+</LinearLayout>

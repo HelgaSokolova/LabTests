@@ -1,8 +1,9 @@
 package com.westsamoaconsult.labtests.database
 
-import kotlinx.serialization.ContextualSerialization
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 import kotlinx.serialization.Optional
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 @Serializable
@@ -12,7 +13,7 @@ data class ArticleItem(
     val name: String,
     val type: Int,
     val address: String,
-    @ContextualSerialization @Optional var lastOpened: Date = Date(0),
+    @ContextualSerialization @Optional var lastOpened: Date? = Date(0),
     @Optional val subtitle: String? = null,
     @Optional var isFavorite: Boolean = false,
     @Optional var link: String? = null,
@@ -68,5 +69,18 @@ data class ArticleItem(
             gname = it["name"] as String
             glogo = it["image"] as String
         }
+    }
+}
+
+@Serializer(forClass = Date::class)
+object DateSerializer : KSerializer<Date> {
+    private val df: DateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS")
+
+    override fun serialize(encoder: Encoder, obj: Date) {
+        encoder.encodeString(df.format(obj))
+    }
+
+    override fun deserialize(decoder: Decoder): Date {
+        return df.parse(decoder.decodeString())
     }
 }

@@ -5,7 +5,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.MenuItem
-import com.westsamoaconsult.labtests.bookmark.FirstViewFragment
+import com.westsamoaconsult.labtests.bookmark.first.FirstViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.info.InfoViewFragment

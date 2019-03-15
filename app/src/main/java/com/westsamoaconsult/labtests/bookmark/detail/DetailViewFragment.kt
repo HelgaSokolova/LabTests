@@ -1,5 +1,6 @@
-package com.westsamoaconsult.labtests.bookmark
+package com.westsamoaconsult.labtests.bookmark.detail
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
@@ -8,24 +9,30 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.westsamoaconsult.labtests.MainApplication
+import com.westsamoaconsult.labtests.R
+import com.westsamoaconsult.labtests.bookmark.second.SecondViewAdapter
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.database.ArticleItem
+import com.westsamoaconsult.labtests.database.DateSerializer
 import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
+import kotlinx.serialization.context.SimpleModule
 import kotlinx.serialization.json.Json
 import java.util.*
-import com.google.gson.reflect.TypeToken
-import com.westsamoaconsult.labtests.R
+import kotlin.collections.ArrayList
 
 
 class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener {
     companion object {
+        private val DateJson = Json(indented = true).apply { install(SimpleModule(Date::class, DateSerializer)) }
+
         fun newInstance(article: ArticleItem) = DetailViewFragment().apply {
             arguments = Bundle().apply {
-                putString("articleItem", Json.stringify(ArticleItem.serializer(), article))
+                putString("articleItem", DateJson.stringify(ArticleItem.serializer(), article))
             }
         }
     }
@@ -43,14 +50,19 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.setBackgroundColor(Color.parseColor("#efeff4"))
+
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity!!);
-        dataItem = Json.parse(ArticleItem.serializer(), arguments!!.getString("articleItem")!!)
+        dataItem = DateJson.parse(ArticleItem.serializer(), arguments!!.getString("articleItem")!!)
     }
 
     override fun onClick(article: ArticleItem) {
     }
 
     override fun onForeground() {
+        super.onForeground()
+
         (activity as BaseActivity).apply {
             setTitle(dataItem.name)
             setBackButtonVisible(true)
@@ -61,9 +73,9 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
             }
         }
 
-        loadHtmlFile();
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-//        recyclerView.adapter = SecondViewAdapter(context!!, articles, this)
+        loadHtmlFile()
+
+        updateList()
     }
 
     override fun onRightButtonPressed() {
@@ -93,16 +105,10 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
                 .setTitle("Reference Range")
                 .setMessage("How would you like the Reference Range to be displayed?\\n\\n(It can be changed under 'More')")
                 .setPositiveButton("SI") { dialog, _ ->
-                    Utils.saveData(
-                        Constants.REFERENCE_RANGE,
-                        "SI"
-                    ); loadHtmlFile(); dialog.dismiss()
+                    Utils.saveData(Constants.REFERENCE_RANGE, "SI"); loadHtmlFile(); dialog.dismiss()
                 }
                 .setNegativeButton("US") { dialog, _ ->
-                    Utils.saveData(
-                        Constants.REFERENCE_RANGE,
-                        "US"
-                    ); loadHtmlFile(); dialog.dismiss()
+                    Utils.saveData(Constants.REFERENCE_RANGE, "US"); loadHtmlFile(); dialog.dismiss()
                 }
                 .show()
         }
@@ -119,9 +125,50 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
         }
 
         if (data == null) {
-            val db = Utils.loadJSONFromAsset(String.format("%s.json", dataItem.address));
+            val db = Utils.loadJSONFromAsset(String.format("%s.json", dataItem.address))
             val typeOfHashMap = object : TypeToken<MutableMap<String, Any>>() {}.type
             data = Gson().fromJson<MutableMap<String, Any>>(db, typeOfHashMap)
         }
+    }
+
+    private fun updateList() {
+        val itemList = mutableListOf<DetailViewItem>()
+
+        data!!.apply {
+            (get("Article") as ArrayList<*>).forEach {
+                (it as Map<*, *>).apply {
+                    itemList.add(SectionDetailItem(get("header") as String))
+
+                    val displayString: String
+                    if (Utils.loadData<String>(Constants.REFERENCE_RANGE) != "US") {
+                        displayString = (get("paragraph_SI") as ArrayList<*>)[0] as String
+                    } else {
+                        displayString = (get("paragraph_US") as ArrayList<*>)[0] as String
+                    }
+
+                    if (displayString.contains(".png")) {
+                        itemList.add(ImageDetailItem(displayString))
+                        return@forEach
+                    }
+
+                    if (itemList.size == 1 ) {
+                        val dict = Utils.loadData<Map<String, String>>("customDots")
+
+                        dict?.get(dataItem.address)?.let {
+                            itemList.add(HeaderDetailItem(displayString, it))
+                        } ?: run {
+                            val imageName = (data!!.get("dot_image") as ArrayList<*>)[0] as String
+                            itemList.add(HeaderDetailItem(displayString, imageName))
+                        }
+                        return@forEach
+                    }
+
+                    itemList.add(TextDetailItem(displayString))
+                }
+            }
+
+        }
+
+        recyclerView.adapter = DetailViewAdapter(itemList)
     }
 }

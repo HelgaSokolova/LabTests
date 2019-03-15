@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewLayout"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="vertical">
 
     <TextView
-            android:id="@+id/sectionTitle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingTop="15dp"
-            android:paddingStart="15dp"
-            android:textColor="@color/colorPrimary"
-            android:background="#66ffffff"
-            android:textSize="13sp"
-            android:text="GENERAL" />
+        android:id="@+id/sectionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:textColor="@color/colorPrimary"
+        android:background="#66ffffff"
+        android:textSize="13sp"
+        android:text="GENERAL" />
 
     <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#c8c7cc"
-    />
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#c8c7cc" />
 
 </LinearLayout>

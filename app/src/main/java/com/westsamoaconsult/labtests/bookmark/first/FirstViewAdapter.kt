@@ -1,4 +1,4 @@
-package com.westsamoaconsult.labtests.bookmark
+package com.westsamoaconsult.labtests.bookmark.first
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.database.CategoryItem
 import kotlinx.android.synthetic.main.bookmark_first_item.view.*
 
@@ -16,7 +17,13 @@ class FirstViewAdapter(val mContext: Context, val categories: List<CategoryItem>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        return ViewHolder(inflater.inflate(com.westsamoaconsult.labtests.R.layout.bookmark_first_item, parent, false))
+        return ViewHolder(
+            inflater.inflate(
+                R.layout.bookmark_first_item,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
