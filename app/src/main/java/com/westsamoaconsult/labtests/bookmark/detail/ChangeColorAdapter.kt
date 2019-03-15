@@ -24,7 +24,7 @@ class ChangeColorAdapter(private val colors: Array<String>, private val listener
 
         holder.apply {
             val imageId = itemView.context.resources.getIdentifier(color, "drawable", itemView.context.packageName)
-            imageView.setBackgroundResource(imageId)
+            imageView.setImageResource(imageId)
 
             btnImage.setOnClickListener {
                 listener.onClick(colors[position])

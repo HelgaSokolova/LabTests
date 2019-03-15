@@ -22,7 +22,7 @@
             <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/back" />
+                    android:src="@drawable/back" />
 
         </com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout>
 
@@ -48,7 +48,7 @@
                 android:layout_height="27dp"
                 android:layout_margin="4dp"
                 android:visibility="gone"
-                android:background="@drawable/star_nonfilled_22" />
+                android:src="@drawable/star_nonfilled_22" />
 
             <TextView
                 android:id="@+id/btnRightText"

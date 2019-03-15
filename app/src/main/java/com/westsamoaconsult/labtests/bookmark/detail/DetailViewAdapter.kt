@@ -77,7 +77,7 @@ class DetailViewAdapter(private val detailList: List<DetailViewItem>) :
 
             itemView.apply {
                 val imageId = context.resources.getIdentifier(logo, "drawable", context.packageName)
-                imageView.setBackgroundResource(imageId)
+                imageView.setImageResource(imageId)
             }
         }
     }

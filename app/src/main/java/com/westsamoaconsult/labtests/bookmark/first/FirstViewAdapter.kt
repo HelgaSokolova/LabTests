@@ -33,7 +33,7 @@ class FirstViewAdapter(val mContext: Context, val categories: List<CategoryItem>
 
         val imageId = mContext.resources.getIdentifier(logo, "drawable", mContext.packageName)
         holder.apply {
-            imageView.setBackgroundResource(imageId)
+            imageView.setImageResource(imageId)
             textLabel.text = category.name
             itemView.setOnClickListener {
                 listener.onClick(category)

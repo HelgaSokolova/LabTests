@@ -140,17 +140,19 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
     private fun buildList() {
         itemList = mutableListOf<DetailViewItem>()
 
-        data!!.apply {
-            (get("Article") as ArrayList<*>).forEach {
-                (it as Map<*, *>).apply {
-                    itemList.add(SectionDetailItem(get("header") as String, itemList.size == 0))
+        (data!!.get("Article") as ArrayList<*>).forEach {
+            (it as Map<*, *>).apply {
+                itemList.add(SectionDetailItem(get("header") as String, itemList.size == 0))
 
-                    val displayString: String
-                    if (Utils.loadData<String>(Constants.REFERENCE_RANGE) != "US") {
-                        displayString = (get("paragraph_SI") as ArrayList<*>)[0] as String
-                    } else {
-                        displayString = (get("paragraph_US") as ArrayList<*>)[0] as String
-                    }
+                val paragraphList: ArrayList<*>
+                if (Utils.loadData<String>(Constants.REFERENCE_RANGE) != "US") {
+                    paragraphList = get("paragraph_SI") as ArrayList<*>
+                } else {
+                    paragraphList = get("paragraph_US") as ArrayList<*>
+                }
+
+                paragraphList.forEach{
+                    val displayString = it as String
 
                     if (displayString.contains(".png")) {
                         itemList.add(ImageDetailItem(displayString))
