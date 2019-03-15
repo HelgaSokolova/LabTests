@@ -1,11 +1,11 @@
-package com.westsamoaconsult.labtests.recent
+package com.westsamoaconsult.labtests.tabs.recent
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.R
-import com.westsamoaconsult.labtests.bookmark.second.SecondViewAdapter
+import com.westsamoaconsult.labtests.tabs.bookmark.second.SecondViewAdapter
 import com.westsamoaconsult.labtests.database.ArticleItem
 import kotlinx.android.synthetic.main.item_default.view.*
 

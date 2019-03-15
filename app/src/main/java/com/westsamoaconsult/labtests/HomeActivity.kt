@@ -5,11 +5,11 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.MenuItem
-import com.westsamoaconsult.labtests.bookmark.first.FirstViewFragment
+import com.westsamoaconsult.labtests.tabs.bookmark.first.FirstViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
-import com.westsamoaconsult.labtests.info.InfoViewFragment
-import com.westsamoaconsult.labtests.recent.RecentsViewFragment
+import com.westsamoaconsult.labtests.tabs.info.InfoViewFragment
+import com.westsamoaconsult.labtests.tabs.recent.RecentsViewFragment
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.main_activity.*
 

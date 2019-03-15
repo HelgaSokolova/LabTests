@@ -1,4 +1,4 @@
-package com.westsamoaconsult.labtests.info
+package com.westsamoaconsult.labtests.tabs.info
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

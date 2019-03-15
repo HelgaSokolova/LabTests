@@ -1,4 +1,4 @@
-package com.westsamoaconsult.labtests.bookmark.second
+package com.westsamoaconsult.labtests.tabs.bookmark.second
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

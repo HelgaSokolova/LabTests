@@ -1,4 +1,4 @@
-package com.westsamoaconsult.labtests.bookmark.first
+package com.westsamoaconsult.labtests.tabs.bookmark.first
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
-import com.westsamoaconsult.labtests.bookmark.second.SecondViewFragment
+import com.westsamoaconsult.labtests.tabs.bookmark.second.SecondViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.database.CategoryItem

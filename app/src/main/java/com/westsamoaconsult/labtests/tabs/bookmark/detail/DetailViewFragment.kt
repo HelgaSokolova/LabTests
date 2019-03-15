@@ -1,4 +1,4 @@
-package com.westsamoaconsult.labtests.bookmark.detail
+package com.westsamoaconsult.labtests.tabs.bookmark.detail
 
 import android.graphics.Color
 import android.os.Bundle
@@ -12,17 +12,13 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.westsamoaconsult.labtests.MainApplication
-import com.westsamoaconsult.labtests.bookmark.second.SecondViewAdapter
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.database.ArticleItem
-import com.westsamoaconsult.labtests.database.DateSerializer
 import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.detail_change_color.view.*
 import kotlinx.android.synthetic.main.info_fragment.*
-import kotlinx.serialization.context.SimpleModule
-import kotlinx.serialization.json.Json
 import java.util.*
 
 
