@@ -26,7 +26,9 @@ import kotlinx.serialization.json.Json
 import java.util.*
 
 
-class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener, View.OnClickListener {
+class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener, View.OnClickListener,
+    ChangeColorAdapter.OnItemClickListener {
+
     companion object {
         private val DateJson = Json(indented = true).apply { install(SimpleModule(Date::class, DateSerializer)) }
 
@@ -41,7 +43,7 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
     private lateinit var mFirebaseAnalytics: FirebaseAnalytics
     private var data: MutableMap<String, Any>? = null;
 
-    private val dotImages1 = arrayOf("Black.png", "Gold.png", "Gray.png", "Green.png", "Lavender", "Light Blue.png", "Light Green.png", "Orange.png", "Pink.png", "Red.png", "Royal Blue.png", "Tan.png", "White.png", "Yellow.png", "CSF.png", "Pico70.png");
+    private val dotImages1 = arrayOf("Black.png", "Gold.png", "Gray.png", "Green.png", "Lavender.png", "Light Blue.png", "Light Green.png", "Orange.png", "Pink.png", "Red.png", "Royal Blue.png", "Tan.png", "White.png", "Yellow.png", "CSF.png", "Pico70.png");
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(com.westsamoaconsult.labtests.R.layout.bookmark_first_fragment, container, false)
@@ -166,7 +168,6 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
                     itemList.add(TextDetailItem(displayString))
                 }
             }
-
         }
 
         recyclerView.adapter = DetailViewAdapter(itemList)
@@ -177,58 +178,18 @@ class DetailViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener,
             com.westsamoaconsult.labtests.R.id.btnImage -> {
                 val dialog = BottomSheetDialog(activity!!)
                 val bottomSheet = layoutInflater.inflate(com.westsamoaconsult.labtests.R.layout.detail_change_color, null)
-                bottomSheet.btnCancel.setOnClickListener { dialog.dismiss() }
-                dialog.setContentView(bottomSheet)
+                bottomSheet.apply {
+                    btnCancel.setOnClickListener { dialog.dismiss() }
+                    recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                    recyclerView.adapter = ChangeColorAdapter(dotImages1, this@DetailViewFragment)
+                    dialog.setContentView(this)
+                }
                 dialog.show()
-
-
-//                NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
-//                paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-//                paragraphStyle.alignment = NSTextAlignmentCenter;
-//
-//                NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"C H A N G E   T H E   C O L O R" attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:14], NSParagraphStyleAttributeName : paragraphStyle}];
-//
-//                CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*0.85, 45)];
-//                [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//                button.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-//                [button setTitle:@"Cancel" forState:UIControlStateNormal];
-//                button.layer.cornerRadius = 4.0f;
-//                button.backgroundColor = [DesignUtils blueColor];
-//                button.selectionHandler = ^(CNPPopupButton *button){
-//                    [self.popupController dismissPopupControllerAnimated:YES];
-//                };
-//
-//                UILabel *titleLabel = [[UILabel alloc] init];
-//                titleLabel.numberOfLines = 0;
-//                titleLabel.attributedText = title;
-//                titleLabel.textColor = [DesignUtils blueColor];
-//
-//                UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.tabBarController.view.frame.size.height, [[UIScreen mainScreen] bounds].size.width*0.85, 100)];
-//                scrollView.scrollEnabled = YES;
-//                scrollView.backgroundColor = [UIColor whiteColor];
-//
-//                [scrollView setPagingEnabled:NO];
-//                scrollView.showsHorizontalScrollIndicator = NO;
-//
-//                int multiply = 0;
-//                for (NSString *image in dotImages1) {
-//                    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(10+(70*multiply), 20, 60, 60)];
-//                    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-//                    [button addTarget:self action:@selector(buttonChanged:) forControlEvents:UIControlEventTouchUpInside];
-//                    button.tag = 300+multiply;
-//                    [scrollView addSubview:button];
-//                    multiply++;
-//                }
-//
-//                scrollView.contentSize = CGSizeMake(10+(70*dotImages1.count), 100);
-//                [scrollView setScrollEnabled:YES];
-//
-//                self.popupController = [[CNPPopupController alloc] initWithContents:@[titleLabel, scrollView, button]];
-//                self.popupController.theme = [CNPPopupTheme defaultTheme];
-//                self.popupController.theme.popupStyle = CNPPopupStyleActionSheet;
-//                self.popupController.delegate = self;
-//                [self.popupController presentPopupControllerAnimated:YES];
             }
         }
+    }
+
+    override fun onClick(color: String) {
+
     }
 }
