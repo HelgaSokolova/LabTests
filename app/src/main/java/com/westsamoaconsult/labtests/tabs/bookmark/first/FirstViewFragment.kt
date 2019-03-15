@@ -40,6 +40,5 @@ class FirstViewFragment: BaseFragment(),
         super.onForeground()
 
         (activity as BaseActivity).setTitle("Categories")
-        (activity as BaseActivity).setBackButtonVisible(false)
     }
 }

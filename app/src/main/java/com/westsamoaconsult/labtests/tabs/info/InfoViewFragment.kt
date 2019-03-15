@@ -10,18 +10,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import com.westsamoaconsult.labtests.R
+import com.westsamoaconsult.labtests.common.BaseActivity
+import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
 
 
-class InfoViewFragment: Fragment(), RadioGroup.OnCheckedChangeListener, InfoAdapter.OnItemClickListener {
+class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, InfoAdapter.OnItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.info_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onForeground()
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
@@ -51,6 +54,12 @@ class InfoViewFragment: Fragment(), RadioGroup.OnCheckedChangeListener, InfoAdap
         listInfoItem.add(SectionInfoItem("APP DETAILS"))
 
         recyclerView.adapter = InfoAdapter(listInfoItem)
+    }
+
+    override fun onForeground() {
+        super.onForeground()
+
+        (activity as BaseActivity).setTitle("Info")
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
