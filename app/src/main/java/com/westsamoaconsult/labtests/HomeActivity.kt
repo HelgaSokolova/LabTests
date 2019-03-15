@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.main_activity.*
 
 
 class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener{
+    private var prevId = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -29,6 +30,10 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        if (prevId == item.itemId) {
+            return true
+        }
+        prevId = item.itemId
         val fragment: Fragment
 
         when (item.itemId) {

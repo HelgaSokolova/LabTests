@@ -175,10 +175,10 @@ class SegmentedGroup : RadioGroup {
 
         super.setOnCheckedChangeListener { group, checkedId ->
             val current = mDrawableMap!![checkedId]
-            current!!.reverseTransition(200)
+            current!!.reverseTransition(0)
             if (mLastCheckId != 0) {
                 val last = mDrawableMap!![mLastCheckId]
-                last?.reverseTransition(200)
+                last?.reverseTransition(0)
             }
             mLastCheckId = checkedId
 
