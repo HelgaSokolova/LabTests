@@ -12,6 +12,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.westsamoaconsult.labtests.MainApplication
+import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.database.ArticleItem
@@ -39,7 +40,7 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(com.westsamoaconsult.labtests.R.layout.bookmark_first_fragment, container, false)
+        return inflater.inflate(R.layout.bookmark_first_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,7 +55,7 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
         }
 
         bottomDialog = BottomSheetDialog(activity!!)
-        val bottomSheet = layoutInflater.inflate(com.westsamoaconsult.labtests.R.layout.detail_change_color, null)
+        val bottomSheet = layoutInflater.inflate(R.layout.detail_change_color, null)
         bottomSheet.apply {
             btnCancel.setOnClickListener { bottomDialog.dismiss() }
             recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -70,9 +71,9 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
             setTitle(dataItem.name)
             setBackButtonVisible(true)
             if (dataItem.isFavorite) {
-                setRightButtonVisible(true, com.westsamoaconsult.labtests.R.drawable.star_filled_22)
+                setRightButtonVisible(true, R.drawable.star_filled_22)
             } else {
-                setRightButtonVisible(true, com.westsamoaconsult.labtests.R.drawable.star_nonfilled_22)
+                setRightButtonVisible(true, R.drawable.star_nonfilled_22)
             }
         }
 
@@ -83,11 +84,11 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
     override fun onRightButtonPressed() {
         if (dataItem.isFavorite) {
             dataItem.isFavorite = false
-            (activity as BaseActivity).setRightButtonVisible(true, com.westsamoaconsult.labtests.R.drawable.star_nonfilled_22)
+            (activity as BaseActivity).setRightButtonVisible(true, R.drawable.star_nonfilled_22)
         }
         else {
             dataItem.isFavorite = true
-            (activity as BaseActivity).setRightButtonVisible(true, com.westsamoaconsult.labtests.R.drawable.star_filled_22)
+            (activity as BaseActivity).setRightButtonVisible(true, R.drawable.star_filled_22)
         }
 
         val bundle = Bundle().apply {
@@ -178,7 +179,7 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            com.westsamoaconsult.labtests.R.id.btnImage -> {
+            R.id.btnImage -> {
                 bottomDialog.show()
             }
         }

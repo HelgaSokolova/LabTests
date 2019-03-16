@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.info_fragment.*
 
 class RecentsViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(com.westsamoaconsult.labtests.R.layout.bookmark_first_fragment, container, false)
+        return inflater.inflate(R.layout.bookmark_first_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

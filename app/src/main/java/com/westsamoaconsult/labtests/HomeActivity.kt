@@ -48,12 +48,12 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     override fun onBackStackChanged() {
-        val fragment = supportFragmentManager!!.findFragmentById(com.westsamoaconsult.labtests.R.id.fragmentContainer)
+        val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentContainer)
         (fragment as BaseFragment).onForeground()
     }
 
     override fun onRightButtonPressed() {
-        val fragment = supportFragmentManager!!.findFragmentById(com.westsamoaconsult.labtests.R.id.fragmentContainer)
+        val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentContainer)
         (fragment as BaseFragment).onRightButtonPressed()
     }
 }
