@@ -1,51 +1,61 @@
 package com.westsamoaconsult.labtests.tabs.favorite
 
+import android.icu.text.Normalizer.NO
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
+import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
-import com.westsamoaconsult.labtests.tabs.bookmark.second.SecondViewAdapter
 import com.westsamoaconsult.labtests.database.ArticleItem
-import kotlinx.android.synthetic.main.item_default.view.*
+import com.westsamoaconsult.labtests.tabs.bookmark.second.SecondViewAdapter
+import kotlinx.android.synthetic.main.favorite_item.view.*
 
-class FavoriteViewAdapter(private val recents: List<ArticleItem>, val listener: SecondViewAdapter.OnItemClickListener) :
-    RecyclerView.Adapter<FavoriteViewAdapter.ViewHolder>() {
+class FavoriteViewAdapter(private val favorites: ArrayList<ArticleItem>, val listener: SecondViewAdapter.OnItemClickListener) :
+    RecyclerSwipeAdapter<FavoriteViewAdapter.ViewHolder>() {
+
+    override fun getSwipeLayoutResourceId(position: Int) = R.id.swipe
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        return ViewHolder(inflater.inflate(R.layout.item_default, parent, false))
+        return ViewHolder(inflater.inflate(R.layout.favorite_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val article = recents[position]
+        val article = favorites[position]
 
-        holder.apply {
-            viewLayout.layoutParams.height = (60 * itemView.context.resources.displayMetrics.density + 0.5f).toInt()
-
-            divider.setBackgroundResource(R.color.colorPrimary)
-
+        holder.itemView.apply {
             title.text = article.name
             article.subtitle?.let {
                 subTitle.text = it
                 subTitle.visibility = View.VISIBLE
             }
 
-            itemView.setOnClickListener {
-                itemView.isEnabled = false
+            viewLayout.setOnClickListener {
+                viewLayout.isEnabled = false
                 listener.onClick(article.itemId)
             }
+
+            rightLayout.setOnClickListener {
+                mItemManger.removeShownLayouts(swipe)
+                favorites.removeAt(position)
+                notifyItemRemoved(position)
+                notifyItemRangeChanged(position, favorites.size)
+                mItemManger.closeAllItems()
+
+                article.isFavorite = false
+                MainApplication.instance.database.saveFavorites()
+            }
+
+            mItemManger.bindView(this, position)
         }
     }
 
-    override fun getItemCount() = recents.size
+    override fun getItemCount() = favorites.size
 
 //    View HOLDER
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val viewLayout = itemView.viewLayout!!
-        val title = itemView.title!!
-        val subTitle = itemView.subTitle!!
-        val divider = itemView.divider!!
-    }
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){}
 }

@@ -109,8 +109,8 @@ class Database {
         return opened;
     }
 
-    fun getFavorites() : List<ArticleItem> {
-        val opened = mutableListOf<ArticleItem>()
+    fun getFavorites() : ArrayList<ArticleItem> {
+        val opened = arrayListOf<ArticleItem>()
 
         for (item in allArticles) {
             if (item.isFavorite) {
