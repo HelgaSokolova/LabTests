@@ -36,31 +36,76 @@
                 android:textSize="18sp"
                 android:textColor="#ffffff" />
 
-        <com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout
-            android:id="@+id/btnRight"
+        <LinearLayout
+            android:id="@+id/rightLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_gravity="end">
 
-            <ImageView
-                android:id="@+id/btnRightImage"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_margin="4dp"
-                android:tint="@android:color/white"
-                android:src="@drawable/search" />
+            <FrameLayout
+                android:id="@+id/actionBarSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/btnRightText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="7dp"
-                android:text="Edit"
-                android:textSize="17sp"
-                android:visibility="gone"
-                android:textColor="#ffffff" />
+                <EditText
+                    android:id="@+id/actionBarSearchText"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="40dp"
+                    android:drawablePadding="5dp"
+                    android:background="@drawable/search_bar_drawable"
+                    android:textColor="@android:color/black"
+                    android:singleLine="true"
+                    android:hint="Search"
+                    android:drawableLeft="@drawable/search_drawable" />
 
-        </com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout>
+                <com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout
+                    android:id="@+id/actionBarClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/close" />
+
+                </com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout>
+
+            </FrameLayout>
+
+            <com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout
+                android:id="@+id/btnRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btnRightImage"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/search" />
+
+                <TextView
+                    android:id="@+id/btnRightText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="7dp"
+                    android:text="Edit"
+                    android:textSize="17sp"
+                    android:textColor="#ffffff" />
+            </com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout>
+
+        </LinearLayout>
+
     </android.support.v7.widget.Toolbar>
 
 </android.support.design.widget.AppBarLayout>

@@ -11,6 +11,7 @@ import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.tabs.favorite.FavoriteViewFragment
 import com.westsamoaconsult.labtests.tabs.info.InfoViewFragment
 import com.westsamoaconsult.labtests.tabs.recent.RecentsViewFragment
+import com.westsamoaconsult.labtests.tabs.search.SearchViewFragment
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -41,6 +42,7 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.bookmarks -> { fragment = FirstViewFragment() }
             R.id.favorite -> { fragment = FavoriteViewFragment() }
             R.id.recent -> { fragment = RecentsViewFragment() }
+            R.id.search -> { fragment = SearchViewFragment() }
             else -> { fragment = InfoViewFragment() }
         }
 
@@ -55,5 +57,11 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     override fun onRightButtonPressed() {
         val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentContainer)
         (fragment as BaseFragment).onRightButtonPressed()
+    }
+
+    override fun onSearchChanged(text: String) {
+        super.onSearchChanged(text)
+        val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentContainer)
+        (fragment as BaseFragment).onSearchChanged()
     }
 }

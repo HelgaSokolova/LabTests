@@ -8,7 +8,9 @@ open class BaseFragment : Fragment() {
             setTitle("")
             setBackButtonVisible(false)
             setRightButtonVisible(false, "")
+            setSearchBarVisible(false)
         }
     }
     open fun onRightButtonPressed() {}
+    open fun onSearchChanged(text: String) {}
 }
