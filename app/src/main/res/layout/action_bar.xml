@@ -47,8 +47,8 @@
                 android:layout_width="27dp"
                 android:layout_height="27dp"
                 android:layout_margin="4dp"
-                android:visibility="gone"
-                android:src="@drawable/star_nonfilled_22" />
+                android:tint="@android:color/white"
+                android:src="@drawable/search" />
 
             <TextView
                 android:id="@+id/btnRightText"
@@ -57,7 +57,7 @@
                 android:layout_marginRight="7dp"
                 android:text="Edit"
                 android:textSize="17sp"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:textColor="#ffffff" />
 
         </com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout>
