@@ -8,6 +8,7 @@ import android.view.MenuItem
 import com.westsamoaconsult.labtests.tabs.bookmark.first.FirstViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
+import com.westsamoaconsult.labtests.tabs.favorite.FavoriteViewFragment
 import com.westsamoaconsult.labtests.tabs.info.InfoViewFragment
 import com.westsamoaconsult.labtests.tabs.recent.RecentsViewFragment
 import com.westsamoaconsult.labtests.utils.Utils
@@ -38,6 +39,7 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
         when (item.itemId) {
             R.id.bookmarks -> { fragment = FirstViewFragment() }
+            R.id.favorite -> { fragment = FavoriteViewFragment() }
             R.id.recent -> { fragment = RecentsViewFragment() }
             else -> { fragment = InfoViewFragment() }
         }
