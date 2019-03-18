@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
+import com.westsamoaconsult.labtests.DisclaimerActivity
 import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
@@ -64,7 +65,9 @@ class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, Info
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback on LabTests")
                 startActivity(Intent.createChooser(emailIntent, "Feedback on LabTests"))
             }
-            "Disclaimer" -> {}
+            "Disclaimer" -> {
+                startActivity(Intent(activity!!, DisclaimerActivity::class.java))
+            }
             "Reset tube colors" -> {
                 Utils.removeData("customDots")
                 Utils.showAlertDialog(activity!!, "Reset completed", "The color of the tubes have been reset")
