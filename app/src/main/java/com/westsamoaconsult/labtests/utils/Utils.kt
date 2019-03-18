@@ -17,6 +17,7 @@ object Utils {
     fun saveData(key: String, value: Any) = editor.putString(key, Gson().toJson(value)).commit()
     @Suppress("UNCHECKED_CAST")
     inline fun <reified T: Any> loadData(key: String): T? = Gson().fromJson(settings.getString(key, ""), T::class.java)
+    fun removeData(key: String) = editor.remove(key).apply()
 
     fun loadJSONFromAsset(fileName: String): String {
         val inputStream = MainApplication.instance.getAssets().open(fileName)

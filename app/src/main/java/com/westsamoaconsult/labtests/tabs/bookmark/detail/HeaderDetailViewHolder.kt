@@ -3,12 +3,6 @@ package com.westsamoaconsult.labtests.tabs.bookmark.detail
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.detail_item_header.view.*
-import android.R.attr.scrollY
-import android.R.attr.scrollY
-
-
-
-
 
 
 class HeaderDetailViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),

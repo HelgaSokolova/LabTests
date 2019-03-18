@@ -3,7 +3,6 @@ package com.westsamoaconsult.labtests.tabs.info
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -66,7 +65,10 @@ class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, Info
                 startActivity(Intent.createChooser(emailIntent, "Feedback on LabTests"))
             }
             "Disclaimer" -> {}
-            "Reset tube colors" -> {}
+            "Reset tube colors" -> {
+                Utils.removeData("customDots")
+                Utils.showAlertDialog(activity!!, "Reset completed", "The color of the tubes have been reset")
+            }
             "Restore in-app purchases" -> {}
         }
     }
