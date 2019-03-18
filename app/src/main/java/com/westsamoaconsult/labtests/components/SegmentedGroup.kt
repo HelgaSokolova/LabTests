@@ -25,8 +25,6 @@ class SegmentedGroup : RadioGroup {
     private var mLayoutSelector: LayoutSelector? = null
     private var mCornerRadius: Float? = null
     private var mCheckedChangeListener: RadioGroup.OnCheckedChangeListener? = null
-    private var mDrawableMap: HashMap<Int, TransitionDrawable>? = null
-    private var mLastCheckId: Int = 0
 
     constructor(context: Context) : super(context) {
         mTintColor = ContextCompat.getColor(context, R.color.radio_button_selected_color)
@@ -106,7 +104,6 @@ class SegmentedGroup : RadioGroup {
     }
 
     fun updateBackground() {
-        mDrawableMap = HashMap()
         val count = super.getChildCount()
         for (i in 0 until count) {
             val child = getChildAt(i)
@@ -156,41 +153,27 @@ class SegmentedGroup : RadioGroup {
         maskDrawable.setColor(maskColor)
         val pressedDrawable = LayerDrawable(arrayOf<Drawable>(uncheckedDrawable, maskDrawable))
 
-        val drawables = arrayOf<Drawable>(uncheckedDrawable, checkedDrawable)
-        val transitionDrawable = TransitionDrawable(drawables)
-        if ((view as RadioButton).isChecked) {
-            transitionDrawable.reverseTransition(0)
-        }
-
         val stateListDrawable = StateListDrawable()
         stateListDrawable.addState(
             intArrayOf(-android.R.attr.state_checked, android.R.attr.state_pressed),
             pressedDrawable
         )
-        stateListDrawable.addState(StateSet.WILD_CARD, transitionDrawable)
-
-        mDrawableMap!![view.getId()] = transitionDrawable
+        stateListDrawable.addState(
+            intArrayOf(android.R.attr.state_checked),
+            checkedDrawable
+        )
+        stateListDrawable.addState(
+            intArrayOf(-android.R.attr.state_checked),
+            uncheckedDrawable
+        )
 
         view.setBackground(stateListDrawable)
 
         super.setOnCheckedChangeListener { group, checkedId ->
-            val current = mDrawableMap!![checkedId]
-            current!!.reverseTransition(0)
-            if (mLastCheckId != 0) {
-                val last = mDrawableMap!![mLastCheckId]
-                last?.reverseTransition(0)
-            }
-            mLastCheckId = checkedId
-
             if (mCheckedChangeListener != null) {
                 mCheckedChangeListener!!.onCheckedChanged(group, checkedId)
             }
         }
-    }
-
-    override fun onViewRemoved(child: View) {
-        super.onViewRemoved(child)
-        mDrawableMap!!.remove(child.id)
     }
 
     override fun setOnCheckedChangeListener(listener: RadioGroup.OnCheckedChangeListener) {

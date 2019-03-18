@@ -18,42 +18,19 @@ import kotlinx.android.synthetic.main.info_fragment.*
 
 
 class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, InfoAdapter.OnItemClickListener {
+    private val listInfoItem = mutableListOf<InfoItem>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.info_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onForeground()
 
+        onForeground()
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        val defaultRangeId = when (Utils.loadData<String>(Constants.REFERENCE_RANGE)) {
-            "SI" -> R.id.buttonSI
-            "US" -> R.id.buttonUS
-            else -> R.id.buttonSI
-        }
-        val defaultTextId = when (Utils.loadData<Int>(Constants.GLOBAL_TEXT_SIZE)) {
-            14 -> R.id.buttonSmall
-            16 -> R.id.buttonMedium
-            19 -> R.id.buttonLarge
-            else -> R.id.buttonMedium
-        }
-
-        val listInfoItem = mutableListOf<InfoItem>()
-        listInfoItem.add(SectionInfoItem("GENERAL"))
-        listInfoItem.add(RangeInfoItem(defaultRangeId, this))
-        listInfoItem.add(TextSizeInfoItem(defaultTextId, this))
-        listInfoItem.add(DefaultInfoItem("Send Feedback", this))
-        listInfoItem.add(DefaultInfoItem("Disclaimer", this))
-        listInfoItem.add(DefaultInfoItem("Reset tube colors", this))
-
-        listInfoItem.add(SectionInfoItem("IN-APP PURCHASE"))
-        listInfoItem.add(DefaultInfoItem("Restore in-app purchases", this))
-
-        listInfoItem.add(SectionInfoItem("APP DETAILS"))
-
-        recyclerView.adapter = InfoAdapter(listInfoItem)
+        buildList()
     }
 
     override fun onForeground() {
@@ -66,9 +43,18 @@ class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, Info
         when (checkedId) {
             R.id.buttonSI -> Utils.saveData(Constants.REFERENCE_RANGE, "SI")
             R.id.buttonUS -> Utils.saveData(Constants.REFERENCE_RANGE, "US")
-            R.id.buttonSmall -> Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 14)
-            R.id.buttonMedium -> Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 16)
-            R.id.buttonLarge -> Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 19)
+            R.id.buttonSmall -> {
+                Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 14)
+                buildList()
+            }
+            R.id.buttonMedium -> {
+                Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 16)
+                buildList()
+            }
+            R.id.buttonLarge -> {
+                Utils.saveData(Constants.GLOBAL_TEXT_SIZE, 19)
+                buildList()
+            }
         }
     }
 
@@ -83,5 +69,35 @@ class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, Info
             "Reset tube colors" -> {}
             "Restore in-app purchases" -> {}
         }
+    }
+
+    private fun buildList() {
+        listInfoItem.clear()
+
+        val defaultRangeId = when (Utils.loadData<String>(Constants.REFERENCE_RANGE)) {
+            "SI" -> R.id.buttonSI
+            "US" -> R.id.buttonUS
+            else -> R.id.buttonSI
+        }
+        val defaultTextId = when (Utils.loadData<Int>(Constants.GLOBAL_TEXT_SIZE)) {
+            14 -> R.id.buttonSmall
+            16 -> R.id.buttonMedium
+            19 -> R.id.buttonLarge
+            else -> R.id.buttonMedium
+        }
+
+        listInfoItem.add(SectionInfoItem("GENERAL"))
+        listInfoItem.add(RangeInfoItem(defaultRangeId, this))
+        listInfoItem.add(TextSizeInfoItem(defaultTextId, this))
+        listInfoItem.add(DefaultInfoItem("Send Feedback", this))
+        listInfoItem.add(DefaultInfoItem("Disclaimer", this))
+        listInfoItem.add(DefaultInfoItem("Reset tube colors", this))
+
+        listInfoItem.add(SectionInfoItem("IN-APP PURCHASE"))
+        listInfoItem.add(DefaultInfoItem("Restore in-app purchases", this))
+
+        listInfoItem.add(SectionInfoItem("APP DETAILS"))
+
+        recyclerView.adapter = InfoAdapter(listInfoItem)
     }
 }
