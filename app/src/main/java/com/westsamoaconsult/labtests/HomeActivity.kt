@@ -62,6 +62,6 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     override fun onSearchChanged(text: String) {
         super.onSearchChanged(text)
         val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentContainer)
-        (fragment as BaseFragment).onSearchChanged()
+        (fragment as BaseFragment).onSearchChanged(text)
     }
 }

@@ -34,7 +34,7 @@ class SecondViewFragment: BaseFragment(),
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
         val articles = MainApplication.instance.database.getItemsOfCategory(arguments!!.getInt("categoryId"))
-        recyclerView.adapter = SecondViewAdapter(context!!, articles, this)
+        recyclerView.adapter = SecondViewAdapter(articles, this)
     }
 
     override fun onClick(articleId: Int) {

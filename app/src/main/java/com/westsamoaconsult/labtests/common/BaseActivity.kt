@@ -6,6 +6,8 @@ import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.action_bar.*
 
 open class BaseActivity : AppCompatActivity() {
+    var searchText = ""
+
     override fun onResume() {
         super.onResume()
 
@@ -16,10 +18,13 @@ open class BaseActivity : AppCompatActivity() {
             onRightButtonPressed()
         }
         actionBarClose.setOnClickListener {
-            actionBarSearchText.setText("")
+            clearSearchBarText()
         }
         actionBarSearchText.afterTextChanged {
-            onSearchChanged(it)
+            if (!searchText.equals(it)) {
+                onSearchChanged(it)
+                searchText = it
+            }
         }
     }
 
@@ -68,11 +73,14 @@ open class BaseActivity : AppCompatActivity() {
             rightLayout.layoutParams = rightLayout.layoutParams.apply { width = LinearLayout.LayoutParams.MATCH_PARENT }
             actionBarSearch.visibility = View.VISIBLE
         } else {
-            actionBarSearchText.setText("")
             actionBarTitle.visibility = View.VISIBLE
             rightLayout.layoutParams = rightLayout.layoutParams.apply { width = LinearLayout.LayoutParams.WRAP_CONTENT }
             actionBarSearch.visibility = View.GONE
         }
+    }
+
+    fun clearSearchBarText() {
+        actionBarSearchText.setText("")
     }
 
     fun getSearchBarVisible() = actionBarSearch.visibility == View.VISIBLE

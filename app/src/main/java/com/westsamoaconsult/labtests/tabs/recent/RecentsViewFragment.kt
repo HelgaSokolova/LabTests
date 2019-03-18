@@ -39,11 +39,11 @@ class RecentsViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener
             setRightButtonVisible(true, "Clear")
         }
 
-        recyclerView.adapter = RecentsViewAdapter(MainApplication.instance.database.getRecents(), this)
+        recyclerView.adapter = SecondViewAdapter(MainApplication.instance.database.getRecents(), this)
     }
 
     override fun onRightButtonPressed() {
         MainApplication.instance.database.clearRecents()
-        recyclerView.adapter = RecentsViewAdapter(MainApplication.instance.database.getRecents(), this)
+        recyclerView.adapter = SecondViewAdapter(MainApplication.instance.database.getRecents(), this)
     }
 }
