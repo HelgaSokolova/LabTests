@@ -14,14 +14,10 @@ open class BaseActivity : AppCompatActivity() {
         super.onResume()
 
         val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentLeftContainer)
-        fragment?.let {
-            (fragment as BaseFragment).onForeground()
-        }
+        fragment?.let { (fragment as BaseFragment).onForeground() }
 
         val fragment2 = supportFragmentManager!!.findFragmentById(R.id.fragmentRightContainer)
-        fragment2?.let {
-            (fragment2 as BaseFragment).onForeground()
-        }
+        fragment2?.let { (fragment2 as BaseFragment).onForeground() }
 
         leftActionBar.apply {
             btnLeft.setOnClickListener {onLeftButtonPressed() }
@@ -123,6 +119,8 @@ open class BaseActivity : AppCompatActivity() {
         val fragment = supportFragmentManager.findFragmentById(R.id.fragmentLeftContainer)
         fragment?.let {
             (fragment as BaseFragment).onLeftButtonPressed()
+        } ?: run {
+            onBackPressed()
         }
     }
 
