@@ -67,6 +67,8 @@ class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, Info
                 startActivity(Intent.createChooser(emailIntent, "Feedback on LabTests"))
             }
             "Disclaimer" -> {
+                if (isLocked) return
+                setLockScreen()
                 startActivity(Intent(activity!!, DisclaimerActivity::class.java))
             }
             "Reset tube colors" -> {
