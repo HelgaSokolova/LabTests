@@ -14,6 +14,7 @@
         android:layout_weight="1">
 
         <LinearLayout
+            android:id="@+id/leftPanel"
             android:layout_width="320dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -41,6 +42,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/rightPanel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">

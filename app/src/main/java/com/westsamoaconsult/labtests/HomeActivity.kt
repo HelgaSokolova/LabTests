@@ -5,6 +5,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.MenuItem
+import android.view.ViewTreeObserver
 import com.westsamoaconsult.labtests.tabs.bookmark.first.FirstViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
@@ -23,8 +24,12 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        leftActionBar.apply { toolbar.post { actionBarTitle.maxWidth = (toolbar.width * 0.7).toInt() } }
-        rightActionBar?.apply { toolbar.post { actionBarTitle.maxWidth = (toolbar.width * 0.7).toInt() } }
+        leftActionBar.apply {
+            toolbar.viewTreeObserver.addOnGlobalLayoutListener { actionBarTitle.maxWidth = (toolbar.width * 0.7).toInt() }
+        }
+        rightActionBar?.apply {
+            toolbar.viewTreeObserver.addOnGlobalLayoutListener { actionBarTitle.maxWidth = (toolbar.width * 0.7).toInt() }
+        }
 
         supportFragmentManager!!.addOnBackStackChangedListener(this)
 

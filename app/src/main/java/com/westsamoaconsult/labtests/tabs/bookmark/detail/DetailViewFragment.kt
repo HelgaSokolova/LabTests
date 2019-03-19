@@ -84,7 +84,15 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
     }
 
     override fun onLeftButtonPressed2() {
-
+        if (activity!!.leftPanel?.visibility == View.VISIBLE) {
+            activity!!.leftPanel?.visibility = View.GONE
+            (activity as BaseActivity).setBackButtonVisible2(true)
+            recyclerView.adapter = DetailViewAdapter(itemList)
+        } else {
+            activity!!.leftPanel?.visibility = View.VISIBLE
+            (activity as BaseActivity).setBackButtonVisible2(true, R.drawable.resize)
+            recyclerView.adapter = DetailViewAdapter(itemList)
+        }
     }
 
     override fun onRightButtonPressed() {
