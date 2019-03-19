@@ -123,12 +123,10 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
                 .setTitle("Reference Range")
                 .setMessage("How would you like the Reference Range to be displayed?\r\n\r\n(It can be changed under 'More')")
                 .setPositiveButton("SI") { dialog, _ ->
-                    Utils.saveData(Constants.REFERENCE_RANGE, "SI"); loadHtmlFile(); dialog.dismiss()
-                    buildList()
+                    Utils.saveData(Constants.REFERENCE_RANGE, "SI"); loadHtmlFile(); buildList(); dialog.dismiss()
                 }
                 .setNegativeButton("US") { dialog, _ ->
-                    Utils.saveData(Constants.REFERENCE_RANGE, "US"); loadHtmlFile(); dialog.dismiss()
-                    buildList()
+                    Utils.saveData(Constants.REFERENCE_RANGE, "US"); loadHtmlFile(); buildList(); dialog.dismiss()
                 }
                 .show()
         }
@@ -210,7 +208,7 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
             dict = mutableMapOf()
         }
 
-        dict.set(dataItem.address, color)
+        dict[dataItem.address] = color
         Utils.saveData("customDots", dict)
         buildList()
     }

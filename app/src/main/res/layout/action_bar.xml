@@ -32,8 +32,9 @@
             android:id="@+id/actionBarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:layout_gravity="center"
-            android:lines="1"
+            android:maxLines="1"
             android:ellipsize="end"
             android:textStyle="bold"
             android:textSize="18sp"
@@ -63,7 +64,7 @@
                     android:drawablePadding="5dp"
                     android:background="@drawable/search_bar_drawable"
                     android:textColor="@android:color/black"
-                    android:singleLine="true"
+                    android:maxLines="1"
                     android:hint="Search"
                     android:drawableLeft="@drawable/search_drawable" />
 

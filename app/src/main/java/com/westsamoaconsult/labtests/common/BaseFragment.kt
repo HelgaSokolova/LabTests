@@ -1,7 +1,6 @@
 package com.westsamoaconsult.labtests.common
 
 import android.support.v4.app.Fragment
-import kotlinx.android.synthetic.main.main_activity.*
 
 open class BaseFragment : Fragment() {
     var isLocked = false
