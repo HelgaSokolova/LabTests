@@ -109,9 +109,11 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
                 .setMessage("How would you like the Reference Range to be displayed?\r\n\r\n(It can be changed under 'More')")
                 .setPositiveButton("SI") { dialog, _ ->
                     Utils.saveData(Constants.REFERENCE_RANGE, "SI"); loadHtmlFile(); dialog.dismiss()
+                    buildList()
                 }
                 .setNegativeButton("US") { dialog, _ ->
                     Utils.saveData(Constants.REFERENCE_RANGE, "US"); loadHtmlFile(); dialog.dismiss()
+                    buildList()
                 }
                 .show()
         }
