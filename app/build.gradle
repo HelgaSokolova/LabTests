@@ -49,4 +49,7 @@ dependencies {
 
 //    SWIPE LAYOUT
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+
+//    IN-APP-BILLING
+    implementation 'com.anjlab.android.iab.v3:library:1.0.44'
 }
