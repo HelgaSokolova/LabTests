@@ -13,12 +13,6 @@ open class BaseFragment : Fragment() {
             setBackButtonVisible(false)
             setRightButtonVisible(false, "")
             setSearchBarVisible(false)
-
-            rightActionBar?.let {
-                setTitle2("")
-                setBackButtonVisible2(false)
-                setRightButtonVisible2(false)
-            }
         }
     }
     open fun onLeftButtonPressed() {

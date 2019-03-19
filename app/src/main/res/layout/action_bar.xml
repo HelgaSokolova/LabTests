@@ -34,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textStyle="bold"
-                android:text="YOUR ACTIVITY TITLE"
                 android:textSize="18sp"
                 android:textColor="#ffffff" />
 

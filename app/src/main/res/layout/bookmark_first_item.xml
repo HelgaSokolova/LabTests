@@ -31,12 +31,14 @@
                     android:gravity="center">
 
                 <com.westsamoaconsult.labtests.components.DynamicSizeTextView
-                        android:id="@+id/textLabel"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="#555"
-                        android:text="Text Size"/>
+                    android:id="@+id/textLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textColor="#555"
+                    android:text="Text Size Text Size Text Size Text Size Text Size"/>
 
                 <ImageView
                         android:layout_width="30dp"

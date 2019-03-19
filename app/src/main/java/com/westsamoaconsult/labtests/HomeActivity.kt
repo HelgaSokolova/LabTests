@@ -51,10 +51,5 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         fragment?.let {
             (fragment as BaseFragment).onForeground()
         }
-
-        val fragment2 = supportFragmentManager!!.findFragmentById(R.id.fragmentRightContainer)
-        fragment2?.let {
-            (fragment2 as BaseFragment).onForeground()
-        }
     }
 }
