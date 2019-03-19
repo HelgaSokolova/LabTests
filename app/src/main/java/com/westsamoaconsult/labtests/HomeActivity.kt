@@ -13,6 +13,7 @@ import com.westsamoaconsult.labtests.tabs.info.InfoViewFragment
 import com.westsamoaconsult.labtests.tabs.recent.RecentsViewFragment
 import com.westsamoaconsult.labtests.tabs.search.SearchViewFragment
 import com.westsamoaconsult.labtests.utils.Utils
+import kotlinx.android.synthetic.main.action_bar.view.*
 import kotlinx.android.synthetic.main.main_activity.*
 
 
@@ -21,6 +22,9 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        leftActionBar.apply { toolbar.post { actionBarTitle.maxWidth = (toolbar.width * 0.7).toInt() } }
+        rightActionBar?.apply { toolbar.post { actionBarTitle.maxWidth = (toolbar.width * 0.7).toInt() } }
 
         supportFragmentManager!!.addOnBackStackChangedListener(this)
 
