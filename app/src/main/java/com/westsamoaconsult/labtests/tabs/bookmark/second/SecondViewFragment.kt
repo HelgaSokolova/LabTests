@@ -43,9 +43,10 @@ class SecondViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
     override fun onClick(articleId: Int) {
         if (selectedId == articleId) return
         selectedId = articleId
-        if (activity!!.fragmentRightContainer != null) {
+
+        activity!!.fragmentRightContainer?.let {
             Utils.replaceFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentRightContainer)
-        } else {
+        } ?: run {
             Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentLeftContainer)
         }
     }

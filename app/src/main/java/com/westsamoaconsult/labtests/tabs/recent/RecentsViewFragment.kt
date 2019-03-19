@@ -13,12 +13,15 @@ import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
+import kotlinx.android.synthetic.main.main_activity.*
 
 
 class RecentsViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.bookmark_first_fragment, container, false)
     }
+
+    private var selectedId = -1
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,11 +31,20 @@ class RecentsViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener
     }
 
     override fun onClick(articleId: Int) {
-        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentLeftContainer)
+        if (selectedId == articleId) return
+        selectedId = articleId
+
+        activity!!.fragmentRightContainer?.let {
+            Utils.replaceFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentRightContainer)
+        } ?: run {
+            Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentLeftContainer)
+        }
     }
 
     override fun onForeground() {
         super.onForeground()
+
+        selectedId = -1
 
         (activity as BaseActivity).apply {
             setTitle("Recents")
