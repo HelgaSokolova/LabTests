@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.westsamoaconsult.labtests.R
 import kotlinx.android.synthetic.main.action_bar.view.*
+import kotlinx.android.synthetic.main.detail_item_text.*
 import kotlinx.android.synthetic.main.main_activity.*
 
 open class BaseActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ open class BaseActivity : AppCompatActivity() {
         }
 
         leftActionBar.apply {
-            btnLeft.setOnClickListener { onBackPressed() }
+            btnLeft.setOnClickListener {onLeftButtonPressed() }
             btnRight.setOnClickListener { onRightButtonPressed() }
             actionBarClose.setOnClickListener { clearSearchBarText() }
             actionBarSearchText.afterTextChanged {
@@ -96,8 +97,13 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun setBackButtonVisible2(visible: Boolean) {
+    fun setBackButtonVisible2(visible: Boolean, iconRes: Int = -1) {
         rightActionBar?.btnLeft?.visibility = if (visible) View.VISIBLE else View.GONE
+        if (visible) {
+            rightActionBar?.apply {
+                btnLeftImage.setImageResource(if (iconRes != -1) iconRes else R.drawable.back)
+            }
+        }
     }
 
     fun setRightButtonVisible2(visible: Boolean, iconRes: Int = -1) {
@@ -113,6 +119,20 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
+    open fun onLeftButtonPressed() {
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentLeftContainer)
+        fragment?.let {
+            (fragment as BaseFragment).onLeftButtonPressed()
+        }
+    }
+
+    open fun onLeftButtonPressed2() {
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentRightContainer)
+        fragment?.let {
+            (fragment as BaseFragment).onLeftButtonPressed2()
+        }
+    }
+
     open fun onRightButtonPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.fragmentLeftContainer)
         fragment?.let {
@@ -120,9 +140,12 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    open fun onLeftButtonPressed2() {}
-
-    open fun onRightButtonPressed2() {}
+    open fun onRightButtonPressed2() {
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentRightContainer)
+        fragment?.let {
+            (fragment as BaseFragment).onRightButtonPressed2()
+        }
+    }
 
     open fun onSearchChanged(text: String) {
         if (text.isNotEmpty()) {

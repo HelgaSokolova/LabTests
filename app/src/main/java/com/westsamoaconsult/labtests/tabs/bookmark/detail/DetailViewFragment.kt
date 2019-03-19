@@ -20,6 +20,7 @@ import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.detail_change_color.view.*
 import kotlinx.android.synthetic.main.info_fragment.*
+import kotlinx.android.synthetic.main.main_activity.*
 import java.util.*
 
 
@@ -45,7 +46,6 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         recyclerView.layoutManager = LinearLayoutManager(activity!!)
         recyclerView.setBackgroundColor(Color.parseColor("#efeff4"))
 
@@ -53,6 +53,8 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
         dataItem = MainApplication.instance.database.allArticles.first {
             item -> item.itemId == arguments!!.getInt("articleId")
         }
+
+        onForeground()
 
         bottomDialog = BottomSheetDialog(activity!!)
         val bottomSheet = layoutInflater.inflate(R.layout.detail_change_color, null)
@@ -65,15 +67,15 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
     }
 
     override fun onForeground() {
-        super.onForeground()
-
         (activity as BaseActivity).apply {
-            setTitle(dataItem.name)
-            setBackButtonVisible(true)
-            if (dataItem.isFavorite) {
-                setRightButtonVisible(true, R.drawable.star_filled_22)
-            } else {
-                setRightButtonVisible(true, R.drawable.star_nonfilled_22)
+            rightActionBar?.let {
+                setTitle2(dataItem.name)
+                setBackButtonVisible2(true, R.drawable.resize)
+                setRightButtonVisible2(true, if (dataItem.isFavorite) R.drawable.star_filled_22 else R.drawable.star_nonfilled_22)
+            } ?: run {
+                setTitle(dataItem.name)
+                setBackButtonVisible(true)
+                setRightButtonVisible(true, if (dataItem.isFavorite) R.drawable.star_filled_22 else R.drawable.star_nonfilled_22)
             }
         }
 
@@ -81,15 +83,28 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
         buildList()
     }
 
+    override fun onLeftButtonPressed2() {
+
+    }
+
     override fun onRightButtonPressed() {
-        if (dataItem.isFavorite) {
-            dataItem.isFavorite = false
-            (activity as BaseActivity).setRightButtonVisible(true, R.drawable.star_nonfilled_22)
+        dataItem.isFavorite = !dataItem.isFavorite
+        (activity as BaseActivity).setRightButtonVisible(true,
+            if (!dataItem.isFavorite) R.drawable.star_nonfilled_22 else R.drawable.star_filled_22)
+
+        val bundle = Bundle().apply {
+            putString("article_name", dataItem.name)
+            putBoolean("is_favourite", dataItem.isFavorite)
         }
-        else {
-            dataItem.isFavorite = true
-            (activity as BaseActivity).setRightButtonVisible(true, R.drawable.star_filled_22)
-        }
+        mFirebaseAnalytics.logEvent("article_favourite", bundle)
+
+        MainApplication.instance.database.saveFavorites()
+    }
+
+    override fun onRightButtonPressed2() {
+        dataItem.isFavorite = !dataItem.isFavorite
+        (activity as BaseActivity).setRightButtonVisible2(true,
+            if (!dataItem.isFavorite) R.drawable.star_nonfilled_22 else R.drawable.star_filled_22)
 
         val bundle = Bundle().apply {
             putString("article_name", dataItem.name)

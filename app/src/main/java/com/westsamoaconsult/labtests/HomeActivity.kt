@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.main_activity.*
 
 
 class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
-    private var prevId = -1
+    private var prevId = R.id.bookmarks
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)

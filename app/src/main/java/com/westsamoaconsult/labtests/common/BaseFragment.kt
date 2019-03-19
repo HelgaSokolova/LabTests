@@ -21,7 +21,12 @@ open class BaseFragment : Fragment() {
             }
         }
     }
+    open fun onLeftButtonPressed() {
+        activity!!.onBackPressed()
+    }
+    open fun onLeftButtonPressed2() {}
     open fun onRightButtonPressed() {}
+    open fun onRightButtonPressed2() {}
     open fun onSearchChanged(text: String) {}
 
     fun setLockScreen(isLock: Boolean = true) {

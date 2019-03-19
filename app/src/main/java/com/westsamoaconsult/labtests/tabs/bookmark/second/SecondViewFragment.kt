@@ -16,8 +16,7 @@ import kotlinx.android.synthetic.main.info_fragment.*
 import kotlinx.android.synthetic.main.main_activity.*
 
 
-class SecondViewFragment: BaseFragment(),
-    SecondViewAdapter.OnItemClickListener {
+class SecondViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener {
     companion object {
         fun newInstance(categoryId: Int, categoryName: String) = SecondViewFragment().apply {
             arguments = Bundle().apply {
@@ -26,6 +25,8 @@ class SecondViewFragment: BaseFragment(),
             }
         }
     }
+
+    private var selectedId = -1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.bookmark_first_fragment, container, false)
@@ -40,8 +41,8 @@ class SecondViewFragment: BaseFragment(),
     }
 
     override fun onClick(articleId: Int) {
-        if (isLocked) return
-        setLockScreen()
+        if (selectedId == articleId) return
+        selectedId = articleId
         if (activity!!.fragmentRightContainer != null) {
             Utils.replaceFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentRightContainer)
         } else {
@@ -51,6 +52,8 @@ class SecondViewFragment: BaseFragment(),
 
     override fun onForeground() {
         super.onForeground()
+
+        selectedId = -1
 
         (activity as BaseActivity).setTitle(arguments!!.getString("categoryName")!!)
         (activity as BaseActivity).setBackButtonVisible(true)
