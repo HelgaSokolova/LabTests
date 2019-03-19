@@ -10,8 +10,7 @@ import kotlinx.android.synthetic.main.info_item_range.view.*
 import kotlinx.android.synthetic.main.info_item_section.view.*
 import kotlinx.android.synthetic.main.info_item_text_size.view.*
 
-class InfoAdapter(val infoList: List<InfoItem>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class InfoAdapter(val infoList: List<InfoItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return infoList[position].type
@@ -75,8 +74,25 @@ class InfoAdapter(val infoList: List<InfoItem>) :
 
             itemView.apply {
                 title.text = item.description
-                setOnClickListener {
-                    item.listener.onClick(item.description)
+                if (item.isLast) {
+                    defaultDivider.visibility = View.GONE
+                    dividerSection.visibility = View.VISIBLE
+                } else {
+                    defaultDivider.visibility = View.VISIBLE
+                    dividerSection.visibility = View.GONE
+                }
+                if (item.subDescription.isEmpty()) {
+                    imgArrow.visibility = View.VISIBLE
+                    subDescription.visibility = View.GONE
+                } else {
+                    imgArrow.visibility = View.GONE
+                    subDescription.visibility = View.VISIBLE
+                    subDescription.text = item.subDescription
+                }
+                if (item.listener != null) {
+                    setOnClickListener {
+                        item.listener.onClick(item.description)
+                    }
                 }
             }
         }

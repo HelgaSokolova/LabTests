@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
+import com.westsamoaconsult.labtests.BuildConfig
 import com.westsamoaconsult.labtests.DisclaimerActivity
 import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.common.BaseActivity
@@ -91,17 +92,20 @@ class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, Info
             else -> R.id.buttonMedium
         }
 
+        val strVersion = String.format("%s (%d)", BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE)
+
         listInfoItem.add(SectionInfoItem("GENERAL"))
         listInfoItem.add(RangeInfoItem(defaultRangeId, this))
         listInfoItem.add(TextSizeInfoItem(defaultTextId, this))
         listInfoItem.add(DefaultInfoItem("Send Feedback", this))
         listInfoItem.add(DefaultInfoItem("Disclaimer", this))
-        listInfoItem.add(DefaultInfoItem("Reset tube colors", this))
+        listInfoItem.add(DefaultInfoItem("Reset tube colors", this, true))
 
         listInfoItem.add(SectionInfoItem("IN-APP PURCHASE"))
-        listInfoItem.add(DefaultInfoItem("Restore in-app purchases", this))
+        listInfoItem.add(DefaultInfoItem("Restore in-app purchases", this, true))
 
         listInfoItem.add(SectionInfoItem("APP DETAILS"))
+        listInfoItem.add(DefaultInfoItem("Version", null, true, strVersion))
 
         recyclerView.adapter = InfoAdapter(listInfoItem)
     }

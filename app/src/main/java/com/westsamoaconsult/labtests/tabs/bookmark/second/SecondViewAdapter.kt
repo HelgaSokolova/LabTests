@@ -22,7 +22,7 @@ class SecondViewAdapter(private val articles: List<ArticleItem>, val listener: O
 
         holder.itemView.apply {
             viewLayout.layoutParams.height = (60 * context.resources.displayMetrics.density + 0.5f).toInt()
-            divider.setBackgroundResource(R.color.colorPrimary)
+            defaultDivider.setBackgroundResource(R.color.colorPrimary)
 
             title.text = article.name
             article.subtitle?.let {

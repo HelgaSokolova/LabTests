@@ -53,7 +53,7 @@
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#c8c7cc"
+            android:background="#d1d0d4"
     />
 
 </LinearLayout>

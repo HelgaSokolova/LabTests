@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
         android:id="@+id/viewLayout"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:orientation="vertical"
         android:background="@android:color/white">
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?selectableItemBackground"
-            android:paddingStart="16dp"
-            android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="?selectableItemBackground"
+        android:paddingStart="16dp"
+        android:orientation="vertical">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -43,20 +45,36 @@
 
             </LinearLayout>
 
+            <com.westsamoaconsult.labtests.components.DynamicSizeTextView
+                android:id="@+id/subDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#555"
+                android:visibility="gone"
+                android:text="Title"/>
+
             <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="-5dp"
-                    android:tint="#c7c7cc"
-                    android:src="@drawable/ic_arrow_next"/>
+                android:id="@+id/imgArrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="-5dp"
+                android:tint="#c7c7cc"
+                android:src="@drawable/ic_arrow_next"/>
         </LinearLayout>
 
         <View
-                android:id="@+id/divider"
+                android:id="@+id/defaultDivider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#c8c7cc"/>
+                android:background="#d1d0d4"/>
 
     </LinearLayout>
 
-</RelativeLayout>
+    <View
+        android:id="@+id/dividerSection"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        android:background="#d6d6da"/>
+
+</LinearLayout>

@@ -30,5 +30,7 @@ class TextSizeInfoItem(
 
 class DefaultInfoItem(
     val description: String,
-    val listener: InfoAdapter.OnItemClickListener
+    val listener: InfoAdapter.OnItemClickListener?,
+    val isLast: Boolean = false,
+    val subDescription: String = ""
 ) : InfoItem(InfoItem.NORMAL)
