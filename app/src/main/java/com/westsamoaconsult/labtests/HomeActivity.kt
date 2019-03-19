@@ -16,7 +16,7 @@ import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.main_activity.*
 
 
-class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener{
+class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
     private var prevId = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,10 +24,7 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
         supportFragmentManager!!.addOnBackStackChangedListener(this)
 
-        //loading the default fragment
-        Utils.replaceFragment(FirstViewFragment(), supportFragmentManager, R.id.fragmentContainer)
-
-        //getting bottom navigation view and attaching the listener
+        Utils.replaceFragment(FirstViewFragment(), supportFragmentManager, R.id.fragmentLeftContainer)
         bottomNavigation.setOnNavigationItemSelectedListener(this)
     }
 
@@ -46,22 +43,18 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             else -> { fragment = InfoViewFragment() }
         }
 
-        return Utils.replaceFragment(fragment, supportFragmentManager, R.id.fragmentContainer)
+        return Utils.replaceFragment(fragment, supportFragmentManager, R.id.fragmentLeftContainer)
     }
 
     override fun onBackStackChanged() {
-        val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentContainer)
-        (fragment as BaseFragment).onForeground()
-    }
+        val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentLeftContainer)
+        fragment?.let {
+            (fragment as BaseFragment).onForeground()
+        }
 
-    override fun onRightButtonPressed() {
-        val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentContainer)
-        (fragment as BaseFragment).onRightButtonPressed()
-    }
-
-    override fun onSearchChanged(text: String) {
-        super.onSearchChanged(text)
-        val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentContainer)
-        (fragment as BaseFragment).onSearchChanged(text)
+        val fragment2 = supportFragmentManager!!.findFragmentById(R.id.fragmentRightContainer)
+        fragment2?.let {
+            (fragment2 as BaseFragment).onForeground()
+        }
     }
 }

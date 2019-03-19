@@ -30,7 +30,7 @@ class FirstViewFragment: BaseFragment(), FirstViewAdapter.OnItemClickListener {
     override fun onClick(category: CategoryItem) {
         if (isLocked) return
         setLockScreen()
-        Utils.addFragment(SecondViewFragment.newInstance(category.autoId, category.name), activity!!.supportFragmentManager, R.id.fragmentContainer)
+        Utils.addFragment(SecondViewFragment.newInstance(category.autoId, category.name), activity!!.supportFragmentManager, R.id.fragmentLeftContainer)
     }
 
     override fun onForeground() {

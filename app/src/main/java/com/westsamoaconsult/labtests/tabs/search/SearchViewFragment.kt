@@ -28,13 +28,12 @@ class SearchViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        searchResults.addAll(MainApplication.instance.database.allArticlesSorted)
         onForeground()
 
     }
 
     override fun onClick(articleId: Int) {
-        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentContainer)
+        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentLeftContainer)
     }
 
     override fun onForeground() {
@@ -42,13 +41,13 @@ class SearchViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
 
         (activity as BaseActivity).apply {
             setTitle("Search")
-            onSearchChanged(searchText)
             if (searchText.isEmpty()) {
                 setRightButtonVisible(true, R.drawable.search)
             } else {
                 setSearchBarVisible(true)
                 setRightButtonVisible(true, "Cancel")
             }
+            onSearchChanged(searchText)
         }
     }
 
@@ -66,11 +65,14 @@ class SearchViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener 
 
     override fun onSearchChanged(text: String) {
         searchResults.clear()
-        searchResults.addAll(MainApplication.instance.database.allArticlesSorted.filter {
-            it.name.toLowerCase().contains(text.toLowerCase())
-                    || it.subtitle?.toLowerCase()?.contains(text.toLowerCase()) ?: false
-        })
-
+        if (text.isEmpty()) {
+            searchResults.addAll(MainApplication.instance.database.allArticlesSorted)
+        } else {
+            searchResults.addAll(MainApplication.instance.database.allArticlesSorted.filter {
+                it.name.toLowerCase().contains(text.toLowerCase())
+                        || it.subtitle?.toLowerCase()?.contains(text.toLowerCase()) ?: false
+            })
+        }
         recyclerView.adapter = SecondViewAdapter(searchResults, this)
     }
 }

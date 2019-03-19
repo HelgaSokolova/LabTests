@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
-import com.westsamoaconsult.labtests.tabs.bookmark.detail.DetailViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment
+import com.westsamoaconsult.labtests.tabs.bookmark.detail.DetailViewFragment
+import com.westsamoaconsult.labtests.tabs.bookmark.first.FirstViewFragment
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
+import kotlinx.android.synthetic.main.main_activity.*
 
 
 class SecondViewFragment: BaseFragment(),
@@ -40,7 +42,11 @@ class SecondViewFragment: BaseFragment(),
     override fun onClick(articleId: Int) {
         if (isLocked) return
         setLockScreen()
-        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentContainer)
+        if (activity!!.fragmentRightContainer != null) {
+            Utils.replaceFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentRightContainer)
+        } else {
+            Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentLeftContainer)
+        }
     }
 
     override fun onForeground() {

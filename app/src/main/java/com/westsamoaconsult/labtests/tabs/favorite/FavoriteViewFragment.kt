@@ -30,7 +30,7 @@ class FavoriteViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListene
     override fun onClick(articleId: Int) {
         if (isLocked) return
         setLockScreen()
-        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentContainer)
+        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentLeftContainer)
     }
 
     override fun onForeground() {

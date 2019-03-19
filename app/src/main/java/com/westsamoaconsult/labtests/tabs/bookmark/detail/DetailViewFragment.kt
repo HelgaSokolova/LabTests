@@ -46,7 +46,7 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = LinearLayoutManager(activity!!)
         recyclerView.setBackgroundColor(Color.parseColor("#efeff4"))
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity!!);

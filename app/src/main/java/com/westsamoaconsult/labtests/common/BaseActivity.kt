@@ -3,95 +3,137 @@ package com.westsamoaconsult.labtests.common
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.action_bar.*
+import com.westsamoaconsult.labtests.R
+import kotlinx.android.synthetic.main.action_bar.view.*
+import kotlinx.android.synthetic.main.main_activity.*
 
 open class BaseActivity : AppCompatActivity() {
     var searchText = ""
-
     override fun onResume() {
         super.onResume()
 
-        btnLeft.setOnClickListener {
-            onBackPressed()
+        val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentLeftContainer)
+        fragment?.let {
+            (fragment as BaseFragment).onForeground()
         }
-        btnRight.setOnClickListener{
-            onRightButtonPressed()
+
+        val fragment2 = supportFragmentManager!!.findFragmentById(R.id.fragmentRightContainer)
+        fragment2?.let {
+            (fragment2 as BaseFragment).onForeground()
         }
-        actionBarClose.setOnClickListener {
-            clearSearchBarText()
-        }
-        actionBarSearchText.afterTextChanged {
-            if (!searchText.equals(it)) {
-                onSearchChanged(it)
-                searchText = it
+
+        leftActionBar.apply {
+            btnLeft.setOnClickListener { onBackPressed() }
+            btnRight.setOnClickListener { onRightButtonPressed() }
+            actionBarClose.setOnClickListener { clearSearchBarText() }
+            actionBarSearchText.afterTextChanged {
+                if (!searchText.equals(it)) {
+                    onSearchChanged(it)
+                    searchText = it
+                }
             }
+        }
+
+        rightActionBar?.apply {
+            btnLeft.setOnClickListener{ onLeftButtonPressed2() }
+            btnRight.setOnClickListener{ onRightButtonPressed2() }
         }
     }
 
     fun setTitle(title: String, visible: Boolean = true) {
-        actionBarTitle.text = title
-        if (visible) {
-            actionBarTitle.visibility = View.VISIBLE
-        } else {
-            actionBarTitle.visibility = View.GONE
-        }
+        leftActionBar.actionBarTitle.text = title
+        leftActionBar.actionBarTitle.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     fun setBackButtonVisible(visible: Boolean) {
-        if (visible) {
-            btnLeft.visibility = View.VISIBLE
-        } else {
-            btnLeft.visibility = View.GONE
-        }
+        leftActionBar.btnLeft.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     fun setRightButtonVisible(visible: Boolean, label: String) {
         if (visible) {
-            btnRight.visibility = View.VISIBLE
-            btnRightImage.visibility = View.GONE
-            btnRightText.visibility = View.VISIBLE
-            btnRightText.text = label
+            leftActionBar.btnRight.visibility = View.VISIBLE
+            leftActionBar.btnRightImage.visibility = View.GONE
+            leftActionBar.btnRightText.visibility = View.VISIBLE
+            leftActionBar.btnRightText.text = label
         } else {
-            btnRight.visibility = View.GONE
+            leftActionBar.btnRight.visibility = View.GONE
         }
     }
 
     fun setRightButtonVisible(visible: Boolean, iconRes: Int) {
         if (visible) {
-            btnRight.visibility = View.VISIBLE
-            btnRightText.visibility = View.GONE
-            btnRightImage.visibility = View.VISIBLE
-            btnRightImage.setImageResource(iconRes)
+            leftActionBar.btnRight.visibility = View.VISIBLE
+            leftActionBar.btnRightText.visibility = View.GONE
+            leftActionBar.btnRightImage.visibility = View.VISIBLE
+            leftActionBar.btnRightImage.setImageResource(iconRes)
         } else {
-            btnRight.visibility = View.GONE
+            leftActionBar.btnRight.visibility = View.GONE
         }
     }
 
     fun setSearchBarVisible(visible: Boolean) {
         if (visible) {
-            actionBarTitle.visibility = View.GONE
-            rightLayout.layoutParams = rightLayout.layoutParams.apply { width = LinearLayout.LayoutParams.MATCH_PARENT }
-            actionBarSearch.visibility = View.VISIBLE
+            leftActionBar.actionBarTitle.visibility = View.GONE
+            leftActionBar.rightLayout.layoutParams = leftActionBar.rightLayout.layoutParams.apply { width = LinearLayout.LayoutParams.MATCH_PARENT }
+            leftActionBar.actionBarSearch.visibility = View.VISIBLE
         } else {
-            actionBarTitle.visibility = View.VISIBLE
-            rightLayout.layoutParams = rightLayout.layoutParams.apply { width = LinearLayout.LayoutParams.WRAP_CONTENT }
-            actionBarSearch.visibility = View.GONE
+            leftActionBar.actionBarTitle.visibility = View.VISIBLE
+            leftActionBar.rightLayout.layoutParams = leftActionBar.rightLayout.layoutParams.apply { width = LinearLayout.LayoutParams.WRAP_CONTENT }
+            leftActionBar.actionBarSearch.visibility = View.GONE
         }
     }
 
     fun clearSearchBarText() {
-        actionBarSearchText.setText("")
+        leftActionBar.actionBarSearchText.setText("")
     }
 
-    fun getSearchBarVisible() = actionBarSearch.visibility == View.VISIBLE
+    fun getSearchBarVisible() = leftActionBar.actionBarSearch.visibility == View.VISIBLE
 
-    open fun onRightButtonPressed() {}
+    fun setTitle2(title: String, visible: Boolean = true) {
+        rightActionBar?.apply {
+            actionBarTitle.text = title
+            actionBarTitle.visibility = if (visible) View.VISIBLE else View.GONE
+        }
+    }
+
+    fun setBackButtonVisible2(visible: Boolean) {
+        rightActionBar?.btnLeft?.visibility = if (visible) View.VISIBLE else View.GONE
+    }
+
+    fun setRightButtonVisible2(visible: Boolean, iconRes: Int = -1) {
+        if (visible) {
+            rightActionBar?.apply {
+                btnRight.visibility = View.VISIBLE
+                btnRightText.visibility = View.GONE
+                btnRightImage.visibility = View.VISIBLE
+                btnRightImage.setImageResource(iconRes)
+            }
+        } else {
+            rightActionBar?.btnRight?.visibility = View.GONE
+        }
+    }
+
+    open fun onRightButtonPressed() {
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentLeftContainer)
+        fragment?.let {
+            (fragment as BaseFragment).onRightButtonPressed()
+        }
+    }
+
+    open fun onLeftButtonPressed2() {}
+
+    open fun onRightButtonPressed2() {}
 
     open fun onSearchChanged(text: String) {
         if (text.isNotEmpty()) {
-            actionBarClose.visibility = View.VISIBLE
+            leftActionBar.actionBarClose.visibility = View.VISIBLE
         } else {
-            actionBarClose.visibility = View.GONE
+            leftActionBar.actionBarClose.visibility = View.GONE
+        }
+
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentLeftContainer)
+        fragment?.let {
+            (fragment as BaseFragment).onSearchChanged(text)
         }
     }
 }

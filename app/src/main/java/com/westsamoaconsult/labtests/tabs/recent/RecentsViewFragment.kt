@@ -28,7 +28,7 @@ class RecentsViewFragment: BaseFragment(), SecondViewAdapter.OnItemClickListener
     }
 
     override fun onClick(articleId: Int) {
-        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentContainer)
+        Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentLeftContainer)
     }
 
     override fun onForeground() {
