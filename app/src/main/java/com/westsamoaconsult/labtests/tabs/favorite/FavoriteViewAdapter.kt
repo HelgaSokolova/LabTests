@@ -35,7 +35,6 @@ class FavoriteViewAdapter(private val favorites: ArrayList<ArticleItem>, val lis
             }
 
             viewLayout.setOnClickListener {
-                viewLayout.isEnabled = false
                 listener.onClick(article.itemId)
             }
 

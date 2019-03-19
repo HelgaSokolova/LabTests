@@ -38,6 +38,8 @@ class SecondViewFragment: BaseFragment(),
     }
 
     override fun onClick(articleId: Int) {
+        if (isLocked) return
+        setLockScreen()
         Utils.addFragment(DetailViewFragment.newInstance(articleId), activity!!.supportFragmentManager, R.id.fragmentContainer)
     }
 

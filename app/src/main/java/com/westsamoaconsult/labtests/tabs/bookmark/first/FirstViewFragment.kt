@@ -14,8 +14,7 @@ import com.westsamoaconsult.labtests.database.CategoryItem
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
 
-class FirstViewFragment: BaseFragment(),
-    FirstViewAdapter.OnItemClickListener {
+class FirstViewFragment: BaseFragment(), FirstViewAdapter.OnItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.bookmark_first_fragment, container, false)
     }
@@ -29,11 +28,9 @@ class FirstViewFragment: BaseFragment(),
     }
 
     override fun onClick(category: CategoryItem) {
-        Utils.addFragment(
-            SecondViewFragment.newInstance(
-                category.autoId,
-                category.name
-            ), activity!!.supportFragmentManager, R.id.fragmentContainer)
+        if (isLocked) return
+        setLockScreen()
+        Utils.addFragment(SecondViewFragment.newInstance(category.autoId, category.name), activity!!.supportFragmentManager, R.id.fragmentContainer)
     }
 
     override fun onForeground() {

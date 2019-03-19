@@ -36,7 +36,6 @@ class FirstViewAdapter(val mContext: Context, val categories: List<CategoryItem>
             imageView.setImageResource(imageId)
             textLabel.text = category.name
             itemView.setOnClickListener {
-                itemView.isEnabled = false
                 listener.onClick(category)
             }
         }
