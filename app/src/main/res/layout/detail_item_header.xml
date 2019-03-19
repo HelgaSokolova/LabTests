@@ -18,8 +18,7 @@
             android:layout_weight="1"
             android:lineSpacingExtra="5dp"
             android:gravity="center_vertical"
-            android:textColor="#555"
-            android:text="Text"/>
+            android:textColor="#555" />
 
         <com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout
             android:id="@+id/btnImage"
@@ -42,6 +41,6 @@
         android:layout_height="wrap_content"
         android:lineSpacingExtra="5dp"
         android:textColor="#555"
-        android:text="Text"/>
+        android:text=""/>
 
 </LinearLayout>

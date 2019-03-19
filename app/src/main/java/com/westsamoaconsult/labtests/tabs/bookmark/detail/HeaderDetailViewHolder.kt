@@ -14,23 +14,26 @@ class HeaderDetailViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
         logo = logo.substring(0, logo.lastIndexOf("."))
 
         itemView.apply {
-            firstText.text = item.description
+            if (firstText.tag != 102) {
+                firstText.text = item.description
+                firstText.tag = 101
+            }
             firstText.viewTreeObserver.addOnGlobalLayoutListener {
                 firstText.apply {
+                    if (tag == 102) return@apply
+                    tag = 102
                     val lastVisibleLineNumber = height / lineHeight - 1
                     val end = layout.getLineEnd(lastVisibleLineNumber)
-                    text = item.description.substring(0, end)
-                    itemView.secondText.text = item.description.substring(end, item.description.length)
+                    if (end == 0) {
+                        text = item.description
+                    } else {
+                        text = item.description.substring(0, end)
+                        itemView.secondText.text = item.description.substring(end, item.description.length)
+                    }
                     if (itemView.secondText.text.isEmpty()) {
                         itemView.secondText.visibility = View.GONE
                     }
                 }
-            }
-
-            firstText.viewTreeObserver.addOnPreDrawListener {
-                val lineCounts = firstText.layout.lineCount
-                var k = 5
-                true
             }
 
             val imageId = context.resources.getIdentifier(logo, "drawable", context.packageName)
