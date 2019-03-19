@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.westsamoaconsult.labtests.R
 import com.westsamoaconsult.labtests.database.ArticleItem
+import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.item_default.view.*
 
 class SecondViewAdapter(private val articles: List<ArticleItem>, val listener: OnItemClickListener) :
@@ -21,7 +22,7 @@ class SecondViewAdapter(private val articles: List<ArticleItem>, val listener: O
         val article = articles[position]
 
         holder.itemView.apply {
-            viewLayout.layoutParams.height = (60 * context.resources.displayMetrics.density + 0.5f).toInt()
+            viewLayout.layoutParams.height = Utils.intToDp(60, context)
             defaultDivider.setBackgroundResource(R.color.colorPrimary)
 
             title.text = article.name

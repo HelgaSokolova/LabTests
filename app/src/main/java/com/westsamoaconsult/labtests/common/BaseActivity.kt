@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.LinearLayout
 import com.westsamoaconsult.labtests.R
+import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.action_bar.view.*
-import kotlinx.android.synthetic.main.detail_item_text.*
 import kotlinx.android.synthetic.main.main_activity.*
 
 open class BaseActivity : AppCompatActivity() {
@@ -157,6 +157,17 @@ open class BaseActivity : AppCompatActivity() {
         val fragment = supportFragmentManager.findFragmentById(R.id.fragmentLeftContainer)
         fragment?.let {
             (fragment as BaseFragment).onSearchChanged(text)
+        }
+    }
+
+    open fun setPanelVisible(left: Boolean = true, right: Boolean = true) {
+        leftPanel?.visibility = if (left) View.VISIBLE else View.GONE
+        rightPanel?.visibility = if (left) View.VISIBLE else View.GONE
+
+        if (left && right) {
+            leftPanel?.layoutParams?.width = Utils.intToDp(320, this)
+        } else if (!right) {
+            leftPanel?.layoutParams?.width = LinearLayout.LayoutParams.MATCH_PARENT
         }
     }
 }

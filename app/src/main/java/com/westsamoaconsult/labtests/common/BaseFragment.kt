@@ -12,8 +12,10 @@ open class BaseFragment : Fragment() {
             setBackButtonVisible(false)
             setRightButtonVisible(false, "")
             setSearchBarVisible(false)
+            setPanelVisible()
         }
     }
+
     open fun onLeftButtonPressed() {
         activity!!.onBackPressed()
     }

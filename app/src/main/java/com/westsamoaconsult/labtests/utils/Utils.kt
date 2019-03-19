@@ -1,6 +1,7 @@
 package com.westsamoaconsult.labtests.utils
 
 import android.app.Activity
+import android.content.Context
 import android.content.SharedPreferences
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -53,4 +54,6 @@ object Utils {
             .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
             .show()
     }
+
+    fun intToDp(value: Int, context: Context) = (value * context.resources.displayMetrics.density + 0.5f).toInt()
 }

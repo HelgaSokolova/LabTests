@@ -5,7 +5,9 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.MenuItem
+import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.LinearLayout
 import com.westsamoaconsult.labtests.tabs.bookmark.first.FirstViewFragment
 import com.westsamoaconsult.labtests.common.BaseActivity
 import com.westsamoaconsult.labtests.common.BaseFragment

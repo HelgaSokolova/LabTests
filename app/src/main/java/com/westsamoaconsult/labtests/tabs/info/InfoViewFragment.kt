@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.RadioGroup
 import com.westsamoaconsult.labtests.BuildConfig
 import com.westsamoaconsult.labtests.DisclaimerActivity
@@ -16,6 +17,7 @@ import com.westsamoaconsult.labtests.common.BaseFragment
 import com.westsamoaconsult.labtests.utils.Constants
 import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.info_fragment.*
+import kotlinx.android.synthetic.main.main_activity.*
 
 
 class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, InfoAdapter.OnItemClickListener {
@@ -37,7 +39,10 @@ class InfoViewFragment: BaseFragment(), RadioGroup.OnCheckedChangeListener, Info
     override fun onForeground() {
         super.onForeground()
 
-        (activity as BaseActivity).setTitle("Info")
+        (activity as BaseActivity).apply {
+            setPanelVisible(true, right = false)
+            setTitle("More")
+        }
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
