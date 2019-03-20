@@ -38,6 +38,7 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         }
 
         savedInstanceState?.let{
+            prevId = savedInstanceState.getInt("prevId")
             rightActionBar?.let {
                 val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentLeftContainer)
                 if (fragment != null && fragment is DetailViewFragment) {
@@ -58,6 +59,12 @@ class HomeActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
         supportFragmentManager!!.addOnBackStackChangedListener(this)
         bottomNavigation.setOnNavigationItemSelectedListener(this)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+
+        outState!!.putInt("prevId", prevId)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
