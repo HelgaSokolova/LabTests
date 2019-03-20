@@ -8,16 +8,21 @@ import com.westsamoaconsult.labtests.utils.Utils
 import kotlinx.android.synthetic.main.action_bar.view.*
 import kotlinx.android.synthetic.main.main_activity.*
 
+
+
 open class BaseActivity : AppCompatActivity() {
     var searchText = ""
+
     override fun onResume() {
         super.onResume()
 
         val fragment = supportFragmentManager!!.findFragmentById(R.id.fragmentLeftContainer)
         fragment?.let { (fragment as BaseFragment).onForeground() }
 
-        val fragment2 = supportFragmentManager!!.findFragmentById(R.id.fragmentRightContainer)
-        fragment2?.let { (fragment2 as BaseFragment).onForeground() }
+        if (rightPanel?.visibility == View.VISIBLE) {
+            val fragment2 = supportFragmentManager!!.findFragmentById(R.id.fragmentRightContainer)
+            fragment2?.let { (fragment2 as BaseFragment).onForeground() }
+        }
 
         leftActionBar.apply {
             btnLeft.setOnClickListener {onLeftButtonPressed() }

@@ -23,8 +23,8 @@ class MainApplication : Application(), BillingProcessor.IBillingHandler {
 
         database = Database()
         FBDatabase = FBDatabase()
-        bp = BillingProcessor(this, Constants.APP_LICENSE_KEY, this)
-        bp.initialize()
+//        bp = BillingProcessor(this, Constants.APP_LICENSE_KEY, this)
+//        bp.initialize()
     }
 
     override fun onBillingInitialized() {

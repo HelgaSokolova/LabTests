@@ -10,7 +10,7 @@ class DisclaimerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disclaimer)
 
-        webView.loadUrl("file:///android_asset/infotext.htm");
+        webView.loadUrl("file:///android_asset/infotext.htm")
     }
 
     override fun onResume() {

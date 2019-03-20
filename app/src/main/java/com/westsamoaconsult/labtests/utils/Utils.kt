@@ -10,6 +10,8 @@ import com.google.gson.Gson
 import com.westsamoaconsult.labtests.MainApplication
 import com.westsamoaconsult.labtests.R
 import kotlin.text.Charsets.UTF_8
+import android.util.DisplayMetrics
+
 
 object Utils {
     val settings: SharedPreferences by lazy { MainApplication.instance.getSharedPreferences(Constants.PREFS_NAME, 0) }
@@ -30,10 +32,14 @@ object Utils {
         return String(buffer, UTF_8)
     }
 
-    fun addFragment(fragment: Fragment, fragmentManager: FragmentManager, resId: Int) {
+    fun addFragment(fragment: Fragment, fragmentManager: FragmentManager, resId: Int, noAnimation: Boolean = false) {
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.addToBackStack(null)
+        if (noAnimation) {
+            fragmentTransaction.setCustomAnimations(R.anim.slide_empty, R.anim.slide_empty, R.anim.slide_in_left, R.anim.slide_out_right)
+        } else {
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_left, R.anim.slide_out_right)
+        }
         fragmentTransaction.add(resId, fragment)
         fragmentTransaction.commit()
     }
@@ -47,6 +53,11 @@ object Utils {
         return true
     }
 
+    fun removeFragment(fragment: Fragment, fragmentManager: FragmentManager) {
+        fragmentManager.beginTransaction().remove(fragment).commit()
+        fragmentManager.executePendingTransactions()
+    }
+
     fun showAlertDialog(activity: Activity, title: String? = null, message: String) {
         AlertDialog.Builder(activity)
             .setTitle(title)
@@ -56,4 +67,8 @@ object Utils {
     }
 
     fun intToDp(value: Int, context: Context) = (value * context.resources.displayMetrics.density + 0.5f).toInt()
+
+    fun dpToPixel(dp: Float, context: Context) = dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+
+    fun pixelsToDp(px: Float, context: Context) = px / (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
 }

@@ -2,6 +2,7 @@ package com.westsamoaconsult.labtests.tabs.bookmark.detail
 
 import android.graphics.Color
 import android.os.Bundle
+import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.BottomSheetDialog
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
@@ -30,9 +31,9 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
 
     private lateinit var dataItem: ArticleItem
     private lateinit var mFirebaseAnalytics: FirebaseAnalytics
-    private var data: MutableMap<String, Any>? = null;
+    private var data: MutableMap<String, Any>? = null
 
-    private val dotImages1 = arrayOf("Black.png", "Gold.png", "Gray.png", "Green.png", "Lavender.png", "Light Blue.png", "Light Green.png", "Orange.png", "Pink.png", "Red.png", "Royal Blue.png", "Tan.png", "White.png", "Yellow.png", "CSF.png", "Pico70.png");
+    private val dotImages1 = arrayOf("Black.png", "Gold.png", "Gray.png", "Green.png", "Lavender.png", "Light Blue.png", "Light Green.png", "Orange.png", "Pink.png", "Red.png", "Royal Blue.png", "Tan.png", "White.png", "Yellow.png", "CSF.png", "Pico70.png")
 
     companion object {
         fun newInstance(articleId: Int) = DetailViewFragment().apply {
@@ -49,7 +50,7 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
         recyclerView.layoutManager = LinearLayoutManager(activity!!)
         recyclerView.setBackgroundColor(Color.parseColor("#efeff4"))
 
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity!!);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity!!)
         dataItem = MainApplication.instance.database.allArticles.first {
             item -> item.itemId == arguments!!.getInt("articleId")
         }
@@ -63,6 +64,11 @@ class DetailViewFragment: BaseFragment(), View.OnClickListener, ChangeColorAdapt
             recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             recyclerView.adapter = ChangeColorAdapter(dotImages1, this@DetailViewFragment)
             bottomDialog.setContentView(this)
+
+            val mBehavior = BottomSheetBehavior.from(bottomSheet.parent as View)
+            bottomDialog.setOnShowListener {
+                mBehavior.setPeekHeight(bottomSheet.height)
+            }
         }
     }
 

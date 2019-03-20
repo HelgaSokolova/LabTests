@@ -30,7 +30,7 @@ class Database {
         loadLastUsedTimes()
         loadFavorites()
 
-        allArticlesSorted = allArticles.toMutableList();
+        allArticlesSorted = allArticles.toMutableList()
         allArticlesSorted.sortBy { item -> item.name }
 
         allCategories = dbItem.Categories

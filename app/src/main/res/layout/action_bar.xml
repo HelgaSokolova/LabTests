@@ -10,14 +10,15 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:contentInsetStart="7dp"
-        app:contentInsetEnd="7dp">
+        app:contentInsetStart="0dp"
+        app:contentInsetEnd="0dp">
 
         <com.westsamoaconsult.labtests.utils.TapOpacityHighlightLayout
             android:id="@+id/btnLeft"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:padding="5dp"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
             android:visibility="gone">
 
             <ImageView
@@ -72,8 +73,11 @@
                     android:id="@+id/actionBarClose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
-                    android:layout_marginRight="10dp">
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_gravity="right|center_vertical">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -94,16 +98,18 @@
                 <ImageView
                     android:id="@+id/btnRightImage"
                     android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:layout_margin="4dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:visibility="gone"
                     android:tint="@android:color/white"
-                    android:src="@drawable/search" />
+                    android:src="@drawable/star_filled_22" />
 
                 <TextView
                     android:id="@+id/btnRightText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:visibility="gone"
                     android:layout_marginRight="7dp"
                     android:text="Edit"
                     android:textSize="17sp"
